@@ -79,7 +79,10 @@ void autonomous() {}
  */
 void opcontrol() {
 	while (true) {
+		//running drive function
 		MotorDrive();
-		pros::delay(20);
+		//running intake 
+		setIntakeMotors();
+		pros::delay(15);
 	}
 }
