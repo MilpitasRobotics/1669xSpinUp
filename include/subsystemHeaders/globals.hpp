@@ -16,5 +16,4 @@ extern pros::Motor intake_motors;
 //controller
 extern pros::Controller controller;
 
-//delcaring radio?
-extern pros::Link radio;
+

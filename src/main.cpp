@@ -28,12 +28,6 @@ void on_center_button() {
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	// Created variables for the port number and link id of the radio
-	std::string RADIO_ID = "1669x";
-	int RADIO_TRANSMITTER_PORT = 21;
-
-	// Initialized radio with port number and link id of radio
-	pros::Link radio(RADIO_TRANSMITTER_PORT, RADIO_ID, pros::E_LINK_TRANSMITTER);
 
 	pros::lcd::initialize();
 	pros::lcd::set_text(1, "1669x on top");
