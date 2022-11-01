@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/link.hpp"
 
 //delclaring motors
 
@@ -14,3 +15,6 @@ extern pros::Motor intake_motors;
 
 //controller
 extern pros::Controller controller;
+
+//delcaring radio?
+extern pros::Link radio;
