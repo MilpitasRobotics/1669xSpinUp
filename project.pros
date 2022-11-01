@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "2022VexSpinUp",
+    "project_name": "1669XXSPINUP",
     "target": "v5",
     "templates": {
       "kernel": {
@@ -309,7 +309,8 @@
       }
     },
     "upload_options": {
-      "description": "2022VexSpinUp"
+      "description": "1669x on top ",
+      "icon": "pros"
     }
   }
 }
