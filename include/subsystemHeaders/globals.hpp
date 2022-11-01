@@ -10,7 +10,7 @@ extern pros::Motor rightDrive1;
 extern pros::Motor rightDrive2;
 extern pros::Motor rightDrive3;
 
-extern pros::Motor motorintake;
+extern pros::Motor intake_motors;
 
 //controller
 extern pros::Controller controller;

@@ -3,7 +3,7 @@
 
 
 void setIntake(int power) {
-    motorintake = power;
+    intake_motors = power;
 }
 
 

@@ -13,7 +13,7 @@ pros::Motor rightDrive2(12, pros::E_MOTOR_GEARSET_36, false, pros::E_MOTOR_ENCOD
 pros::Motor rightDrive3(13, pros::E_MOTOR_GEARSET_36, false, pros::E_MOTOR_ENCODER_DEGREES);
 
 //intake motor
-pros::Motor motorintake(14, pros::E_MOTOR_GEARSET_36, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor intake_motors(14, pros::E_MOTOR_GEARSET_36, false, pros::E_MOTOR_ENCODER_DEGREES);
 
 //controller
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
