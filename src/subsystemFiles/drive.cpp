@@ -13,13 +13,16 @@ void setDriveMotors(int left,int right) {
 
 //stuff that makes the motor move we take the values of the controller and plug it into the motor values
 void MotorDrive() {
-    int x = controller.get_analog(ANALOG_LEFT_X);
-    int y = controller.get_analog(ANALOG_LEFT_Y);
+    int x = controller.get_analog(pros ::E_CONTROLLER_ANALOG_LEFT_X);
+    int y = controller.get_analog(pros ::E_CONTROLLER_ANALOG_LEFT_Y);
 
+    //deadzone
     if(abs(x) < 10)
         x = 0;
     if(abs(y) < 10)
         y = 0;
+
+    //this works turning
     int right = (y - x);
     int left = (y + x);
 
