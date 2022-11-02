@@ -12,6 +12,8 @@ double avgdDriveEncodervalue();
 
 // Driver Control Functions
 void MotorDrive();
+void braking();
 
 // Autonomous functions
 void translate(int units, int voltage);
+

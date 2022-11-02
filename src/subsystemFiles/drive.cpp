@@ -56,6 +56,21 @@ void MotorDrive() {
     setDriveMotors(left, right);
 }
 
+//Braking Functions
+
+void braking(){
+    int brake = controller.get_digital(DIGITAL_A);
+
+    if (brake == true){
+        left.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+        right.set_brake_mdoe(pros::E_MOTOR_BRAKE_HOLD);
+    }
+    else{
+        left.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+        right.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+    }
+}
+
 // Autonomous Functions
 void translate(int units, int voltage){
     // determine the direction of motion (either 1 or -1)

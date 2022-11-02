@@ -72,6 +72,8 @@ void opcontrol() {
 		MotorDrive();
 		//running intake 
 		setIntakeMotors();
+		//running brake functions
+		braking();
 		pros::delay(15);
 	}
 }
