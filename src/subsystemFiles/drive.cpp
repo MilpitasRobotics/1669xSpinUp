@@ -62,6 +62,7 @@ void MotorDrive() {
 void braking(){
     int brake = controller.get_digital(DIGITAL_A);
 
+    //using coast for now, need to test with actual robot. I think switchin this to brake might work better
     if (brake == true){
         leftFront.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
         leftMiddle.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
