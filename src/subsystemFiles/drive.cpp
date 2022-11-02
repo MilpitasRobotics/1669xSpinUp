@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/motors.h"
 // Helper Functions
 
 //instead of plotting manual values for each motor we use this helper function to simplify it
@@ -62,12 +63,20 @@ void braking(){
     int brake = controller.get_digital(DIGITAL_A);
 
     if (brake == true){
-        left.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-        right.set_brake_mdoe(pros::E_MOTOR_BRAKE_HOLD);
+        leftFront.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+        leftMiddle.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+        leftBack.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+        rightFront.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+        rightMiddle.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+        rightBack.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     }
     else{
-        left.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-        right.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+        leftFront.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+        leftMiddle.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+        leftBack.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+        rightFront.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+        rightMiddle.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+        rightBack.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     }
 }
 
