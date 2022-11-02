@@ -63,20 +63,20 @@ void braking(){
     int brake = controller.get_digital(DIGITAL_A);
 
     if (brake == true){
-        leftFront.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-        leftMiddle.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-        leftBack.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-        rightFront.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-        rightMiddle.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-        rightBack.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-    }
-    else{
         leftFront.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
         leftMiddle.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
         leftBack.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
         rightFront.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
         rightMiddle.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
         rightBack.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+    }
+    else{
+        leftFront.set_brake_mode(pros::E_MOTOR_BRAKE_INVALID);
+        leftMiddle.set_brake_mode(pros::E_MOTOR_BRAKE_INVALID);
+        leftBack.set_brake_mode(pros::E_MOTOR_BRAKE_INVALID);
+        rightFront.set_brake_mode(pros::E_MOTOR_BRAKE_INVALID);
+        rightMiddle.set_brake_mode(pros::E_MOTOR_BRAKE_INVALID);
+        rightBack.set_brake_mode(pros::E_MOTOR_BRAKE_INVALID);
     }
 }
 
