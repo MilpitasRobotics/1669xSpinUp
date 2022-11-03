@@ -62,14 +62,20 @@ void MotorDrive() {
 void braking(){
     int brake = controller.get_digital(DIGITAL_A);
 
-    //using coast for now, need to test with actual robot. I think switchin this to brake might work better
+    //rewrote this to become an emergency brake, actual braking function will be moving backwards on controller
     if (brake == true){
-        leftFront.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-        leftMiddle.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-        leftBack.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-        rightFront.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-        rightMiddle.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-        rightBack.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+        leftFront.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+        leftMiddle.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+        leftBack.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+        rightFront.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+        rightMiddle.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+        rightBack.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+        leftFront.brake();
+        leftMiddle.brake();
+        leftBack.brake();
+        rightFront.brake();
+        rightMiddle.brake();
+        rightBack.brake();
     }
     else{
         leftFront.set_brake_mode(pros::E_MOTOR_BRAKE_INVALID);
