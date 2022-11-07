@@ -31,7 +31,7 @@ void initialize() {
 
 	pros::lcd::initialize();
 	pros::lcd::set_text(1, "1669x on top");
-
+	autonomous();
 	pros::lcd::register_btn1_cb(on_center_button);
 }
 

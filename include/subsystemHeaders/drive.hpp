@@ -6,6 +6,8 @@
 // Helper Functions
 void setDriveMotors(int left, int right);
 
+void setDriveMotors(int left);
+
 void resetDriveEncoders();
 
 double avgdDriveEncodervalue();
@@ -16,4 +18,5 @@ void braking();
 
 // Autonomous functions
 void translate(int units, int voltage);
+void turn();
 

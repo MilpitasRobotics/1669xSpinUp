@@ -12,6 +12,12 @@ void setDriveMotors(int left,int right) {
     rightBack = right;
 }
 
+void setDriveMotors(int left){
+    leftFront = left;
+    leftMiddle = left;
+    leftBack = left;
+}
+
 // resets all of the motor encoders
 /*
 According to Google:
@@ -107,4 +113,10 @@ void translate(int units, int voltage){
 
     // set drive back to neutral
     setDriveMotors(0,0);
+}
+
+void turn(){
+    pros::delay(1000);
+    setDriveMotors(40);
+    pros::delay(1000);
 }
