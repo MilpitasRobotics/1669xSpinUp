@@ -6,7 +6,7 @@
 // Helper Functions
 void setDriveMotors(int left, int right);
 
-void setDriveMotors(int left);
+void setTurnMotors(int turn);
 
 void resetDriveEncoders();
 
@@ -18,5 +18,5 @@ void braking();
 
 // Autonomous functions
 void translate(int units, int voltage);
-void turn();
+void turn(int turnUnits);
 

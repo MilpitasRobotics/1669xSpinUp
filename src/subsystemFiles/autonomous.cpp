@@ -13,11 +13,11 @@
  */
 void autonomous() {
         translate(50,40); // speed is a scalar so no direction, position is a vector so both direction and magnitude
-        turn();
+        turn(40);
         translate(50,40);
-        turn();
+        turn(40);
         translate(50,40);
-        turn();
+        turn(40);
         translate(50,40);
-        turn();      
+        turn(40);      
 }
