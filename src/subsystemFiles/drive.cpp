@@ -58,13 +58,7 @@ void MotorDrive() {
     int x = controller.get_analog(pros ::E_CONTROLLER_ANALOG_LEFT_X);
     int y = controller.get_analog(pros ::E_CONTROLLER_ANALOG_LEFT_Y);
 
-    //deadzone
-    if(abs(x) < 10)
-        x = 0;
-    if(abs(y) < 10)
-        y = 0;
-
-    //this works turning
+    //this works movement 
     int right = (y - x);
     int left = (y + x);
 
