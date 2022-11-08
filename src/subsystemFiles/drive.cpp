@@ -71,7 +71,7 @@ void braking(){
     int brake = controller.get_digital(DIGITAL_A);
 
     //rewrote this to become an emergency brake, actual braking function will be moving backwards on controller
-    if (brake == true){
+    if (brake == 0){
         leftFront.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
         leftMiddle.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
         leftBack.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);

@@ -12,12 +12,19 @@
  * from where it left off.
  */
 void autonomous() {
-        translate(50,40); // speed is a scalar so no direction, position is a vector so both direction and magnitude
-        turn(40);
-        translate(50,40);
-        turn(40);
-        translate(50,40);
-        turn(40);
-        translate(50,40);
-        turn(40);      
+        // translate(50,40); // speed is a scalar so no direction, position is a vector so both direction and magnitude
+        turn(-53);
+        translate(200,50);
+        pros::delay(5000);
+        translate(-400,50);
+        pros::delay(2000);
+        translate(100,50);
+        turn(53);
+        translate(-100,50);
+        // translate(50,40);
+        // turn(40);
+        // translate(50,40);
+        // turn(40);
+        // translate(50,40);
+        // turn(40);      
 }
