@@ -12,7 +12,7 @@ void setDriveMotors(int left,int right) {
     rightBack = right;
 }
 
-void setTurnMotors(int turn){ // robot will turn right if given a positive value and will turn left if given a negative value
+void setTurnMotorSwing(int turn){ // robot will turn right if given a positive value and will turn left if given a negative value
     if (turn > 0){ 
         leftFront = turn;
         leftMiddle = turn;
@@ -21,10 +21,31 @@ void setTurnMotors(int turn){ // robot will turn right if given a positive value
         turn = abs(turn);
         rightFront = turn;
         rightMiddle = turn;
-        rightBack = turn; 
+        rightBack = turn;
     }
     
 }
+
+void setTurnMotorPoint(int turn){ // robot will turn right if given a positive value and will turn left if given a negative value
+    if (turn > 0){ 
+        leftFront = turn;
+        leftMiddle = turn;
+        leftBack = turn;
+        rightFront = -turn;
+        rightMiddle = -turn;
+        rightBack = -turn; 
+    }else if (turn < 0){
+        turn = abs(turn);
+        rightFront = turn;
+        rightMiddle = turn;
+        rightBack = turn;
+        leftFront = -turn;
+        leftMiddle = -turn;
+        leftBack = -turn;
+    }
+    
+}
+
 
 // resets all of the motor encoders
 /*
@@ -117,8 +138,14 @@ void translate(int units, int voltage){
     setDriveMotors(0,0);
 }
 
-void turn(int turnUnits){
+void turnPoint(int turnUnits){
     pros::delay(1000);
-    setTurnMotors(turnUnits);
+    setTurnMotorPoint(turnUnits);
+    pros::delay(1000);
+}
+
+void turnSwing(int turnUnits){
+    pros::delay(1000);
+    setTurnMotorSwing(turnUnits);
     pros::delay(1000);
 }

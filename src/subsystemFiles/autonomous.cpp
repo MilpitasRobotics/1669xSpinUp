@@ -12,19 +12,39 @@
  * from where it left off.
  */
 void autonomous() {
+
+        translate(200,50); // this moves around 22.5 inches or 56 cm
+        turnSwing(45);
+        // translate(200,50); // this moves around 22.5 inches or 56 cm
+        // turnSwing(45);
+        // translate(200,50); // this moves around 22.5 inches or 56 cm
+        // turnSwing(90);
+        // translate(200,50); // this moves around 22.5 inches or 56 cm
+        // turnSwing(90);
+        // pros::delay(500);
+        // translate(200,50); // this moves around 22.5 inches or 56 cm
+        // turnSwing(45);
+        // pros::delay(500);
+        // translate(200,50); // this moves around 22.5 inches or 56 cm
+        // turnSwing(45);
+        // pros::delay(500);
+        // translate(200,50); // this moves around 22.5 inches or 56 cm
+        // turnSwing(45);
+        // translate(-200,50);
+
+
+        
         // translate(50,40); // speed is a scalar so no direction, position is a vector so both direction and magnitude
-        turn(-53);
-        translate(200,50);
-        pros::delay(5000);
-        translate(-400,50);
-        pros::delay(2000);
-        translate(100,50);
-        turn(53);
-        translate(-100,50);
-        // translate(50,40);
-        // turn(40);
-        // translate(50,40);
-        // turn(40);
-        // translate(50,40);
-        // turn(40);      
+
+        // translate(200,50);
+        // pros::delay(5000);
+        // translate(-400,50);
+        // pros::delay(2000);
+        // translate(100,50);
+        // turn(53);
+        // translate(-100,50);
+
+
+
+   
 }
