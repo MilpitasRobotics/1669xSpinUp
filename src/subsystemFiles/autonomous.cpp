@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/rtos.hpp"
 
 /**
  * Runs the user autonomous code. This function will be started in its own task
@@ -13,8 +14,11 @@
  */
 void autonomous() {
 
-        translate(200,50); // this moves around 22.5 inches or 56 cm
-        turnSwing(45);
+        translate(-36,50); // this moves around 22.5 inches or 56 cm
+        pros::delay(3000);
+        translate(46,50);
+        turnSwing(28);
+        translate(540,50);
         // translate(200,50); // this moves around 22.5 inches or 56 cm
         // turnSwing(45);
         // translate(200,50); // this moves around 22.5 inches or 56 cm
