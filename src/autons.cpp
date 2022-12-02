@@ -29,7 +29,7 @@ const double inches_per_degree = circum/360;
 // If the objects are light or the cog doesn't change much, then there isn't a concern here.
 
 void default_constants() {
-  chassis.set_slew_min_power(50, 50);
+  chassis.set_slew_min_power(80, 80); // Reset this to default
   chassis.set_slew_distance(7, 7);
   chassis.set_pid_constants(&chassis.headingPID, 11, 0, 20, 0);
   chassis.set_pid_constants(&chassis.forward_drivePID, 0.45, 0, 5, 0);
