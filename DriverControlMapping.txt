@@ -1,0 +1,20 @@
+Tentative Movement Configuration (might change depending on preference of driver)
+
+Standard Split Arcade:
+
+Right Joystick - Turning Left and Right
+
+Left Joystick - Moving forwards and backwards
+
+Eugene's suggestions:
+
+Catapult: Ideally one button for pulling back and releasing, but two are possible (one button for pulling back other for releasing)
+
+Intake/Outtake Control: one click of button to start or stop the intake, defaults to intake, holding button reverses to outtake
+
+Expansion Activation: Tentatively pressing 4 buttons down to release mechanism
+
+
+Helpers functions for the driver:
+
+Stop the intake when the catapult is not down so the catapult does not get jammed
