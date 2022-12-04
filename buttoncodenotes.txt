@@ -1,0 +1,8 @@
+master.get_analog() - takes input as either ANALOG_LEFT_X, ANALOG_LEFT_Y, ANALOG_RIGHT_X, ANALOG_RIGHT_Y and returns current reading (from -127 to 127)
+
+
+master.get_digital() - takes input as either DIGITAL_{RIGHT,DOWN,LEFT,UP,A,B,Y,X,R1,R2,L1,L2} and returns 0 or 1, 1 if button is pressed, 0 if not connected
+
+master.get_digital_new_press() - takes input as either DIGITAL_{RIGHT,DOWN,LEFT,UP,A,B,Y,X,R1,R2,L1,L2}, and returns 1 if the button on the controller is pressed and had not been pressed the last time it  was called, 0 otherwise (thinking of using this for toggling intake/outtake)
+
+

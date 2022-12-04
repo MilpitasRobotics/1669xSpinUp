@@ -69,7 +69,7 @@ void initialize() {
   // Configure your chassis controls
   chassis.toggle_modify_curve_with_controller(true); // Enables modifying the controller curve with buttons on the joysticks
   chassis.set_active_brake(0); // Sets the active brake kP. We recommend 0.1.
-  chassis.set_curve_default(0, 0); // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)  need to change this for smooth controlling
+  chassis.set_curve_default(2.5, 1); // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)  need to change this for smooth controlling
   default_constants(); // Set the drive to your own constants from autons.cpp!
   exit_condition_defaults(); // Set the exit conditions to your own constants from autons.cpp!
 
@@ -90,6 +90,7 @@ void initialize() {
   // Initialize chassis and auton selector
   chassis.initialize();
   ez::as::initialize();
+ 
 
 }
 
@@ -177,8 +178,6 @@ void autonomous() {
 void opcontrol() {
   // This is preference to what you like to drive on.
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);    
-  chassis.set_max_speed(75);
-
   while (true) {
     // chassis.tank(); // Tank control
     chassis.arcade_standard(ez::SPLIT); // Standard split arcade
