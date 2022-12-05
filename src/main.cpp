@@ -1,6 +1,8 @@
 #include "main.h"
 #include "EZ-Template/util.hpp"
 #include "autons.hpp"
+#include "pros/misc.h"
+#include "pros/rtos.hpp"
 
 
 /////
@@ -90,7 +92,7 @@ void initialize() {
   // Initialize chassis and auton selector
   chassis.initialize();
   ez::as::initialize();
- 
+
 
 }
 
@@ -176,15 +178,27 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+  pros::ADIDigitalIn catapult_switch (6); // need to check if this port is available in person
+  pros::Motor catapultMotor('A'); // need to check if this port is available
+
   // This is preference to what you like to drive on.
-  chassis.set_drive_brake(MOTOR_BRAKE_COAST);    
+  chassis.set_drive_brake(MOTOR_BRAKE_COAST);  
   while (true) {
     // chassis.tank(); // Tank control
     chassis.arcade_standard(ez::SPLIT); // Standard split arcade
     // chassis.arcade_standard(ez::SINGLE); // Standard single arcade
     // chassis.arcade_flipped(ez::SPLIT); // Flipped split arcade
     // chassis.arcade_flipped(ez::SINGLE); // Flipped single arcade
-
+    while (!catapult_switch.get_value()){
+      catapultMotor.move_velocity(50);
+      pros::delay(20);
+      }
+    if (catapult_switch.get_value()){
+      if(master.get_digital(DIGITAL_R1)){ // catapult code should work smt like this, need to confirm w/ Eugene how exactly it works
+        // launch the disk, need to figure out the code for this
+    }
+    }
+    
     // . . .
     // Put more user control code here!
     // . . .
