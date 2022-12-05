@@ -178,8 +178,8 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-  pros::ADIDigitalIn catapult_switch (6); // need to check if this port is available in person
-  pros::Motor catapultMotor('A'); // need to check if this port is available
+  pros::ADIDigitalIn catapult_switch ('A'); // need to check if this port is available in person
+  pros::Motor catapultMotor(6); // need to check if this port is available
 
   // This is preference to what you like to drive on.
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);  
