@@ -1,9 +1,7 @@
 #include "main.h"
-#include "EZ-Template/util.hpp"
-#include "autons.hpp"
 #include "pros/misc.h"
-#include "pros/rtos.hpp"
-
+#include "catapult.cpp"
+#include "conveyor.cpp"
 
 /////
 // For instalattion, upgrading, documentations and tutorials, check out website!
@@ -178,11 +176,6 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-  pros::ADIDigitalIn catapult_switch ('A'); // need to check if this port is available in person
-  pros::Motor catapultMotor(6); // need to check if this port is available
-  pros::Motor intakeMotor(7);
-
-  bool isPressed = false;
 
   // This is preference to what you like to drive on.
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);  
@@ -192,33 +185,13 @@ void opcontrol() {
     // chassis.arcade_standard(ez::SINGLE); // Standard single arcade
     // chassis.arcade_flipped(ez::SPLIT); // Flipped split arcade
     // chassis.arcade_flipped(ez::SINGLE); // Flipped single arcade
-    while (!catapult_switch.get_value()){
-      catapultMotor.move_velocity(20);
-      pros::delay(20);
-      }
-    if (catapult_switch.get_value()){
-      if(master.get_digital(DIGITAL_R1)){ // catapult code should work smt like this, need to confirm w/ Eugene how exactly it works
-        // launch the disk, need to figure out the code for this
-    }
-    }
-
-    if (master.get_digital(DIGITAL_L1)){ // need to test 
-        intakeMotor.move_velocity(20);
-        isPressed = true;
-    }
-    pros::delay(500); // next if statement will execute so testing to see speed of intake
-    if (isPressed && intakeMotor.get_actual_velocity() > 0 && isBeingHeld(DIGITAL_L1)){ // need to add conditon to check if button is held down should be && smt else
-        intakeMotor.move_velocity(-20);
-        isPressed = true;
-    } 
-    if (master.get_digital(DIGITAL_L1) && isPressed){ 
-        intakeMotor.move_velocity(0);
-        isPressed = false;
-    }
     
     // . . .
     // Put more user control code here!
     // . . .
+    move_catapult();    
+    move_conveyor();
+
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }

@@ -1,17 +1,9 @@
 #include "autons.hpp"
 #include "main.h"
-<<<<<<< Updated upstream
-=======
 #include "pros/adi.hpp"
 #include "pros/misc.h"
->>>>>>> Stashed changes
 #include "pros/rtos.hpp"
 
-
-/////
-// For instalattion, upgrading, documentations and tutorials, check out website!
-// https://ez-robotics.github.io/EZ-Template/
-/////
 
 //For Example Now Drive speed For everything is 75
 const int DRIVE_SPEED = 75; // This is 110/127 (around 87% of max speed).  We don't suggest making this 127.
