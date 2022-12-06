@@ -207,7 +207,7 @@ void opcontrol() {
         isPressed = true;
     }
     pros::delay(500); // next if statement will execute so testing to see speed of intake
-    if (isPressed && intakeMotor.get_actual_velocity() > 0 && !master.get_digital_new_press(DIGITAL_L1)){ // need to add conditon to check if button is held down should be && smt else
+    if (isPressed && intakeMotor.get_actual_velocity() > 0 && isBeingHeld(DIGITAL_L1)){ // need to add conditon to check if button is held down should be && smt else
         intakeMotor.move_velocity(-20);
         isPressed = true;
     } 

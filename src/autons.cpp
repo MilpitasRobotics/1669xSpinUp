@@ -1,5 +1,10 @@
 #include "autons.hpp"
 #include "main.h"
+<<<<<<< Updated upstream
+=======
+#include "pros/adi.hpp"
+#include "pros/misc.h"
+>>>>>>> Stashed changes
 #include "pros/rtos.hpp"
 
 
@@ -295,3 +300,9 @@ double convert_encoder_values(int port){ // assumes that the motors have been ta
   return (pros::c::motor_get_position(port)*inches_per_degree/gear_ratio)*1.5;
 }
 
+bool isBeingHeld(pros::controller_digital_e_t button){
+  bool isHeld1 = master.get_digital(button);
+  pros::delay(100); // need to figure out how long this should be
+  bool isHeld2 = master.get_digital(button);
+  return isHeld2 && isHeld1;
+}

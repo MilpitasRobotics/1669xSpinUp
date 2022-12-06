@@ -14,6 +14,7 @@ void interfered_example();
 void leftSide();
 void test_constants(double inches);
 double convert_encoder_values(int port);
+bool isBeingHeld(pros::controller_digital_e_t button);
 
 void default_constants();
 void one_mogo_constants();
