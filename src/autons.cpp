@@ -1,5 +1,6 @@
 #include "autons.hpp"
 #include "main.h"
+#include "pros/rtos.hpp"
 
 
 /////
@@ -15,7 +16,7 @@ const int DRIVE_SPEED = 75; // This is 110/127 (around 87% of max speed).  We do
 const int TURN_SPEED  = 75;
 const int SWING_SPEED = 75;
 
-const double circum = 5.5*3.141592653589793238462643383279502884197; 
+const double circum = 3.125*3.141592653589793238462643383279502884197; 
 const double gear_ratio = 0.75;
 const double inches_per_degree = circum/360;
 
@@ -71,24 +72,27 @@ void modified_exit_condition() {
 }
 
 
+void leftdrive() {
 
-///
-// Drive Example
-///
-void drive_example() {
-  // The first parameter is target inches
-  // The second parameter is max speed the robot will drive at
-  // The third parameter is a boolean (true or false) for enabling/disabling a slew at the start of drive motions
-  // for slew, only enable it when the drive distance is greater then the slew distance + a few inches
+  //move back, wait 2 seconds to get roller, will implement roller code when it's done
+  chassis.set_drive_pid(-2, DRIVE_SPEED);
+  chassis.wait_drive();
+  pros::delay(200);
 
+  //move foward towards the center line
+  chassis.set_drive_pid(6, DRIVE_SPEED);
+  chassis.wait_drive();
 
+  //turn 45 degrees right, become parallel to the white line
+  chassis.set_turn_pid(45, TURN_SPEED);
+  chassis.wait_drive();
+
+  //move to the middle, will measure later, make sure slew is on or we destory motors
   chassis.set_drive_pid(24, DRIVE_SPEED, true);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(-12, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(-12, DRIVE_SPEED);
+  //turn 90 degrees left to face the goal, will impliment shooting code
+  chassis.set_turn_pid(-90, TURN_SPEED);
   chassis.wait_drive();
 }
 
