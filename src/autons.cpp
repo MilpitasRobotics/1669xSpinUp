@@ -7,15 +7,15 @@
 // https://ez-robotics.github.io/EZ-Template/
 /////
 
-
-const int DRIVE_SPEED = 85; // This is 110/127 (around 87% of max speed).  We don't suggest making this 127.
+//For Example Now Drive speed For everything is 75
+const int DRIVE_SPEED = 75; // This is 110/127 (around 87% of max speed).  We don't suggest making this 127.
                              // If this is 127 and the robot tries to heading correct, it's only correcting by
                              // making one side slower.  When this is 87%, it's correcting by making one side
                              // faster and one side slower, giving better heading correction.
-const int TURN_SPEED  = 85;
-const int SWING_SPEED = 85;
+const int TURN_SPEED  = 75;
+const int SWING_SPEED = 75;
 
-const double circum = 5.5*M_1_PI;
+const double circum = 5.5*3.141592653589793238462643383279502884197; 
 const double gear_ratio = 0.75;
 const double inches_per_degree = circum/360;
 
