@@ -69,7 +69,7 @@ void modified_exit_condition() {
 }
 
 
-void leftdrive() {
+void leftSide() {
 
   //move back, wait 2 seconds to get roller, will implement roller code when it's done
   chassis.set_drive_pid(-2, DRIVE_SPEED);
