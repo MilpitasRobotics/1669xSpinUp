@@ -78,7 +78,7 @@ void initialize() {
   // chassis.set_right_curve_buttons(pros::E_CONTROLLER_DIGITAL_Y,    pros::E_CONTROLLER_DIGITAL_A);
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("Solo AWP Left", leftSide), // replace with correct function 
+    Auton("Solo AWP Left", leftsoloawp), 
     Auton("Solo AWP Right", leftSide),// replace with correct function 
     Auton("Right Side", leftSide), // replace with correct function 
     Auton("Left Side", leftSide),
