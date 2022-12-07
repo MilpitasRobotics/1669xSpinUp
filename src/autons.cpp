@@ -74,28 +74,78 @@ void leftdrive() {
   //move back, wait 2 seconds to get roller, will implement roller code when it's done
   chassis.set_drive_pid(-2, DRIVE_SPEED);
   chassis.wait_drive();
-  pros::delay(200);
+  //roller code
+  pros::delay(100);
 
   //move foward towards the center line
   chassis.set_drive_pid(6, DRIVE_SPEED);
   chassis.wait_drive();
+  pros::delay(50);
 
   //turn 45 degrees right, become parallel to the white line
   chassis.set_turn_pid(45, TURN_SPEED);
   chassis.wait_drive();
+  pros::delay(50);
 
   //move to the middle, will measure later, make sure slew is on or we destory motors
   chassis.set_drive_pid(24, DRIVE_SPEED, true);
   chassis.wait_drive();
+  pros::delay(50);
 
   //turn 90 degrees left to face the goal, will impliment shooting code
   chassis.set_turn_pid(-90, TURN_SPEED);
   chassis.wait_drive();
+  pros::delay(10);
+  //shooting code
+  pros::delay(10);
 }
 
 
+void leftsoloawp() {
+  //move back, wait 2 seconds to get roller, will implement roller code when it's done
+  chassis.set_drive_pid(-2, DRIVE_SPEED);
+  chassis.wait_drive();
+  //roller code
+  pros::delay(100);
 
-///
+  //move foward towards the center line
+  chassis.set_drive_pid(6, DRIVE_SPEED);
+  chassis.wait_drive();
+  pros::delay(50);
+
+  //turn 45 degrees right, become parallel to the white line
+  chassis.set_turn_pid(45, TURN_SPEED);
+  chassis.wait_drive();
+  pros::delay(50);
+
+  //move to the middle, will measure later, make sure slew is on or we destory motors
+  chassis.set_drive_pid(24, DRIVE_SPEED, true);
+  chassis.wait_drive();
+  pros::delay(50);
+
+  //turn 90 degrees left to face the goal, will impliment shooting code
+  chassis.set_turn_pid(-90, TURN_SPEED);
+  chassis.wait_drive();
+  pros::delay(10);
+  //insert shooting code hrere
+  pros::delay(10);
+  //turn 90 degrees left, drive using reverse
+  chassis.set_turn_pid(-90,TURN_SPEED);
+  chassis.wait_drive();
+  pros::delay(10);
+  chassis.set_drive_pid(24,DRIVE_SPEED, true);
+  chassis.wait_drive();
+
+  //turn 90 degrees right to have the thing rolling the roller facing the roller, then back up into roller
+  chassis.set_turn_pid(90, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-2, DRIVE_SPEED);
+  chassis.wait_drive();
+  //roller code here
+}
+
+
+/* ///
 // Turn Example
 ///
 void turn_example() {
@@ -111,67 +161,13 @@ void turn_example() {
 
   chassis.set_turn_pid(0, TURN_SPEED);
   chassis.wait_drive();
-}
-
-
-
-///
-// Combining Turn + Drive
-///
-void drive_and_turn() {
-  chassis.set_drive_pid(24, DRIVE_SPEED, true);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(45, TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(-45, TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(0, TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(-24, DRIVE_SPEED, true);
-  chassis.wait_drive();
-}
-
-
-
-///
-// Wait Until and Changing Max Speed
-///
-void wait_until_change_speed() {
-  // wait_until will wait until the robot gets to a desired position
-
-
-  // When the robot gets to 6 inches, the robot will travel the remaining distance at a max speed of 40
-  chassis.set_drive_pid(24, DRIVE_SPEED, true);
-  chassis.wait_until(6);
-  chassis.set_max_speed(40); // After driving 6 inches at DRIVE_SPEED, the robot will go the remaining distance at 40 speed
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(45, TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(-45, TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(0, TURN_SPEED);
-  chassis.wait_drive();
-
-  // When the robot gets to -6 inches, the robot will travel the remaining distance at a max speed of 40
-  chassis.set_drive_pid(-24, DRIVE_SPEED, true);
-  chassis.wait_until(-6);
-  chassis.set_max_speed(40); // After driving 6 inches at DRIVE_SPEED, the robot will go the remaining distance at 40 speed
-  chassis.wait_drive();
-}
-
+} */
 
 
 ///
 // Swing Example
 ///
-void swing_example() {
+/* void swing_example() {
   // The first parameter is ez::LEFT_SWING or ez::RIGHT_SWING
   // The second parameter is target degrees
   // The third parameter is speed of the moving side of the drive
@@ -186,13 +182,13 @@ void swing_example() {
   chassis.set_swing_pid(ez::RIGHT_SWING, 0, SWING_SPEED);
   chassis.wait_drive();
 }
-
+ */
 
 
 ///
 // Auto that tests everything
 ///
-void combining_movements() {
+/* void combining_movements() {
   chassis.set_drive_pid(24, DRIVE_SPEED, true);
   chassis.wait_drive();
 
@@ -297,4 +293,4 @@ bool isBeingHeld(pros::controller_digital_e_t button){
   pros::delay(100); // need to figure out how long this should be
   bool isHeld2 = master.get_digital(button);
   return isHeld2 && isHeld1;
-}
+} */
