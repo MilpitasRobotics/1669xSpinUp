@@ -2,7 +2,7 @@
 #include "pros/misc.h"
 #include "catapult.cpp"
 #include "conveyor.cpp"
-
+#include "roller.cpp"
 /////
 // For instalattion, upgrading, documentations and tutorials, check out website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -195,7 +195,7 @@ void opcontrol() {
     // . . .
     move_catapult();    
     move_conveyor();
-
+    move_roller();
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }
