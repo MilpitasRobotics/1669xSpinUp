@@ -18,7 +18,6 @@ void move_catapult(){
        catapultMotor.move_velocity(20); // test to see if 20 velocity is right
        pros::delay(500);
        catapultMotor.move_velocity(0);
-       pros::delay(10);
        asdf = true; 
     }
     }
