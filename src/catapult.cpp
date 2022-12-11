@@ -13,11 +13,13 @@ void move_catapult(){
       catapultMotor.move_velocity(-20);
       }
     if (catapult_switch.get_value()){
-      asdf = !asdf;
+      asdf = false;
       if(master.get_digital(DIGITAL_R1)){ // catapult code should work smt like this, need to confirm w/ Eugene how exactly it works
        catapultMotor.move_velocity(20); // test to see if 20 velocity is right
        pros::delay(500);
-       asdf = !asdf; 
+       catapultMotor.move_velocity(0);
+       pros::delay(10);
+       asdf = true; 
     }
     }
 }
