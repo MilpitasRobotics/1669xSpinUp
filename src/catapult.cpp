@@ -22,3 +22,9 @@ void move_catapult(){
     }
     }
 }
+
+void auton_catapult(){
+  catapultMotor.move_velocity(20);
+  pros::delay(500);
+  catapultMotor.move_velocity(0);
+}

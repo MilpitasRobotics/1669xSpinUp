@@ -70,11 +70,10 @@ void modified_exit_condition() {
 
 
 void leftSide() {
-
   //move back, wait 2 seconds to get roller, will implement roller code when it's done
   chassis.set_drive_pid(-2, DRIVE_SPEED);
   chassis.wait_drive();
-  //roller code
+  auton_roller();
   pros::delay(100);
 
   //move foward towards the center line
@@ -96,7 +95,7 @@ void leftSide() {
   chassis.set_turn_pid(-90, TURN_SPEED);
   chassis.wait_drive();
   pros::delay(10);
-  //shooting code
+  auton_catapult();
   pros::delay(10);
 }
 
@@ -105,7 +104,7 @@ void leftsoloawp() {
   //move back, wait 2 seconds to get roller, will implement roller code when it's done
   chassis.set_drive_pid(-2, DRIVE_SPEED);
   chassis.wait_drive();
-  //roller code
+  auton_roller();
   pros::delay(100);
 
   //move foward towards the center line
@@ -127,7 +126,7 @@ void leftsoloawp() {
   chassis.set_turn_pid(-90, TURN_SPEED);
   chassis.wait_drive();
   pros::delay(10);
-  //insert shooting code hrere
+  auton_catapult();
   pros::delay(10);
   //turn 90 degrees left, drive using reverse
   chassis.set_turn_pid(-90,TURN_SPEED);
@@ -141,7 +140,57 @@ void leftsoloawp() {
   chassis.wait_drive();
   chassis.set_drive_pid(-2, DRIVE_SPEED);
   chassis.wait_drive();
+  auton_roller();
   //roller code here
+}
+
+void rightside(){
+  //ROBOT MUST FACE TO THE LEFT
+  chassis.set_drive_pid(30, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(90, TURN_SPEED);
+  chassis.set_drive();
+  chassis.set_drive_pid(-2, DRIVE_SPEED);
+  auton_roller();
+  chassis.set_drive_pid(6, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-45, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(24, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(90, TURN_SPEED);
+  chassis.wait_drive();
+  auton_catapult();
+}
+
+void rightsidesoloawp(){
+  //ROBOT MUST FACE TO THE LEFT
+  chassis.set_drive_pid(30, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(90, TURN_SPEED);
+  chassis.set_drive();
+  chassis.set_drive_pid(-2, DRIVE_SPEED);
+  auton_roller();
+  chassis.set_drive_pid(6, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-45, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(24, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(90, TURN_SPEED);
+  chassis.wait_drive();
+  auton_catapult();
+  chassis.set_turn_pid(-90, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(24, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(45, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive.pid(-6, DRIVE_SPEED);
+  chassis.wait_drive();
+  auton_roller();
+
+
 }
 
 
