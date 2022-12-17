@@ -11,4 +11,5 @@ while (master.get_digital(DIGITAL_L1)){
 
 void auton_roller(){
     rollerMotor.move_relative(50, 50); // need to figure out what this should be exactly
+    pros::delay(10);
 }
