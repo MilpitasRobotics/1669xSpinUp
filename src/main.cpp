@@ -14,18 +14,18 @@
 Drive chassis (
   // Left Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  {-1, -2, -4}
+  {-1, -2, -3} // port 1 was malfunctioning need to figure out what is going on
 
   // Right Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  ,{12, 13, 14}
+  ,{4, 5, 6}
 
   // IMU Port
-  ,9
+  ,8
 
   // Wheel Diameter (Remember, 4" wheels are actually 4.125!)
   //    (or tracking wheel diameter)
-  ,3.125
+  ,3.25
 
   // Cartridge RPM
   //   (or tick per rotation if using tracking wheels)
@@ -35,7 +35,7 @@ Drive chassis (
   //    (or gear ratio of tracking wheel)
   // eg. if your drive is 84:36 where the 36t is powered, your RATIO would be 2.333.
   // eg. if your drive is 36:60 where the 60t is powered, your RATIO would be 0.6.
-  ,0.75  // 36:48 where the 48 is powered so 36/48
+  ,0.6  // 36:48 where the 48 is powered so 36/48
 
   // Uncomment if using tracking wheels
   /*
@@ -183,9 +183,9 @@ void opcontrol() {
     // . . .
     // Put more user control code here!
     // . . .
-    move_catapult();    
-    move_conveyor();
-    move_roller();
+    // move_catapult();    
+    // move_conveyor();
+    // move_roller();
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }
