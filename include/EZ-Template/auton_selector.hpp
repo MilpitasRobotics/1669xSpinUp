@@ -6,6 +6,10 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 #pragma once
 #include <tuple>
+#include "autons.hpp"
+#include "catapult.hpp"
+#include "conveyor.hpp"
+#include "roller.hpp"
 
 #include "EZ-Template/auton.hpp"
 

@@ -1,8 +1,9 @@
 #include "main.h"
 #include "pros/misc.h"
-#include "catapult.cpp"
-#include "conveyor.cpp"
-#include "roller.cpp"
+#include "autons.hpp"
+#include "catapult.hpp"
+#include "conveyor.hpp"
+#include "roller.hpp"
 /////
 // For instalattion, upgrading, documentations and tutorials, check out website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -82,13 +83,6 @@ void initialize() {
     Auton("Solo AWP Right", leftSide),// replace with correct function 
     Auton("Right Side", leftSide), // replace with correct function 
     Auton("Left Side", leftSide),
-    Auton("Example Drive\n\nDrive forward and come back.", drive_example),
-    Auton("Example Turn\n\nTurn 3 times.", turn_example),
-    Auton("Drive and Turn\n\nDrive forward, turn, come back. ", drive_and_turn),
-    Auton("Drive and Turn\n\nSlow down during drive.", wait_until_change_speed),
-    Auton("Swing Example\n\nSwing, drive, swing.", swing_example),
-    Auton("Combine all 3 movements", combining_movements),
-    Auton("Interference\n\nAfter driving forward, robot performs differently if interfered or not.", interfered_example),
   });
 
   // Initialize chassis and auton selector
@@ -142,13 +136,9 @@ void autonomous() {
   chassis.reset_drive_sensor(); 
   chassis.set_drive_brake(MOTOR_BRAKE_HOLD); 
 
-  test_constants(24);
 
-  double avgDist = convert_encoder_values(1) + convert_encoder_values(12);
 
-  ez::print_to_screen("Inches moved: " + to_string(avgDist));
 
-  pros::delay(20);
 
   // ez::print_to_screen(Imu::get_heading);
 

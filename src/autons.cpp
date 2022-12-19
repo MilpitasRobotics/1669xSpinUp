@@ -3,6 +3,8 @@
 #include "pros/adi.hpp"
 #include "pros/misc.h"
 #include "pros/rtos.hpp"
+#include "roller.hpp"
+#include "catapult.hpp"
 
 
 //For Example Now Drive speed For everything is 75
@@ -149,7 +151,7 @@ void rightside(){
   chassis.set_drive_pid(30, DRIVE_SPEED);
   chassis.wait_drive();
   chassis.set_turn_pid(90, TURN_SPEED);
-  chassis.set_drive();
+  chassis.wait_drive();
   chassis.set_drive_pid(-2, DRIVE_SPEED);
   auton_roller();
   chassis.set_drive_pid(6, DRIVE_SPEED);
@@ -168,7 +170,7 @@ void rightsidesoloawp(){
   chassis.set_drive_pid(30, DRIVE_SPEED);
   chassis.wait_drive();
   chassis.set_turn_pid(90, TURN_SPEED);
-  chassis.set_drive();
+  chassis.wait_drive();
   chassis.set_drive_pid(-2, DRIVE_SPEED);
   auton_roller();
   chassis.set_drive_pid(6, DRIVE_SPEED);
@@ -186,115 +188,14 @@ void rightsidesoloawp(){
   chassis.wait_drive();
   chassis.set_turn_pid(45, DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_drive.pid(-6, DRIVE_SPEED);
+  chassis.set_drive_pid(-6, DRIVE_SPEED);
   chassis.wait_drive();
   auton_roller();
 
 
 }
 
-
-/* ///
-// Turn Example
-///
-void turn_example() {
-  // The first parameter is target degrees
-  // The second parameter is max speed the robot will drive at
-
-
-  chassis.set_turn_pid(90, TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(45, TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(0, TURN_SPEED);
-  chassis.wait_drive();
-} */
-
-
-///
-// Swing Example
-///
-/* void swing_example() {
-  // The first parameter is ez::LEFT_SWING or ez::RIGHT_SWING
-  // The second parameter is target degrees
-  // The third parameter is speed of the moving side of the drive
-
-
-  chassis.set_swing_pid(ez::LEFT_SWING, 45, SWING_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(24, DRIVE_SPEED, true);
-  chassis.wait_until(12);
-
-  chassis.set_swing_pid(ez::RIGHT_SWING, 0, SWING_SPEED);
-  chassis.wait_drive();
-}
- */
-
-
-///
-// Auto that tests everything
-///
-/* void combining_movements() {
-  chassis.set_drive_pid(24, DRIVE_SPEED, true);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(45, TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_swing_pid(ez::RIGHT_SWING, -45, TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(0, TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(-24, DRIVE_SPEED, true);
-  chassis.wait_drive();
-}
-
-
-
-///
-// Interference example
-///
-void tug (int attempts) {
-  for (int i=0; i<attempts-1; i++) {
-    // Attempt to drive backwards
-    printf("i - %i", i);
-    chassis.set_drive_pid(-12, 127);
-    chassis.wait_drive();
-
-    // If failsafed...
-    if (chassis.interfered) {
-      chassis.reset_drive_sensor();
-      chassis.set_drive_pid(-2, 20);
-      pros::delay(1000);
-    }
-    // If robot successfully drove back, return
-    else {
-      return;
-    }
-  }
-}
-
-// If there is no interference, robot will drive forward and turn 90 degrees. 
-// If interfered, robot will drive forward and then attempt to drive backwards. 
-void interfered_example() {
- chassis.set_drive_pid(24, DRIVE_SPEED, true);
- chassis.wait_drive();
-
- if (chassis.interfered) {
-   tug(3);
-   return;
- }
-
- chassis.set_turn_pid(90, TURN_SPEED);
- chassis.wait_drive();
-}
-
-
+/* 
 
 // . . .
 // Make your own autonomous functions here!
@@ -322,24 +223,4 @@ void leftSide(){
   // pros::delay(500);
 
 }
-
-void test_constants(double inches){
-  inches = inches * 2;
-  const double circum = 5.5*M_1_PI;
-  const double gear_ratio = 0.75;
-  const double inches_per_degree = circum/360;
-  const double degrees = inches/inches_per_degree;
-  chassis.set_drive_pid(inches, DRIVE_SPEED);
-  chassis.wait_drive();
-}
-
-double convert_encoder_values(int port){ // assumes that the motors have been tared
-  return (pros::c::motor_get_position(port)*inches_per_degree/gear_ratio)*1.5;
-}
-
-bool isBeingHeld(pros::controller_digital_e_t button){
-  bool isHeld1 = master.get_digital(button);
-  pros::delay(100); // need to figure out how long this should be
-  bool isHeld2 = master.get_digital(button);
-  return isHeld2 && isHeld1;
-} */
+*/
