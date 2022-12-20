@@ -5,7 +5,9 @@
 extern Drive chassis;
 
 void leftSide();
-void leftsoloawp();
+void rightSide();
+void leftSoloAwp();
+void rightSoloAwp();
 bool isBeingHeld(pros::controller_digital_e_t button);
 
 void default_constants();

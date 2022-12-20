@@ -102,7 +102,7 @@ void leftSide() {
 }
 
 
-void leftsoloawp() {
+void leftSoloAwp() {
   //move back, wait 2 seconds to get roller, will implement roller code when it's done
   chassis.set_drive_pid(-2, DRIVE_SPEED);
   chassis.wait_drive();
@@ -146,7 +146,7 @@ void leftsoloawp() {
   //roller code here
 }
 
-void rightside(){
+void rightSide(){
   //ROBOT MUST FACE TO THE LEFT
   chassis.set_drive_pid(30, DRIVE_SPEED);
   chassis.wait_drive();
@@ -165,7 +165,7 @@ void rightside(){
   auton_catapult();
 }
 
-void rightsidesoloawp(){
+void rightSoloAwp(){
   //ROBOT MUST FACE TO THE LEFT
   chassis.set_drive_pid(30, DRIVE_SPEED);
   chassis.wait_drive();

@@ -14,11 +14,11 @@
 Drive chassis (
   // Left Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  {-1, -2, -3} // port 1 was malfunctioning need to figure out what is going on
+  {-2, -3, -4} // port 1 was malfunctioning need to figure out what is going on
 
   // Right Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  ,{4, 5, 6}
+  ,{5, 6, 7}
 
   // IMU Port
   ,8
@@ -79,9 +79,9 @@ void initialize() {
   // chassis.set_right_curve_buttons(pros::E_CONTROLLER_DIGITAL_Y,    pros::E_CONTROLLER_DIGITAL_A);
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("Solo AWP Left", leftsoloawp), 
-    Auton("Solo AWP Right", leftSide),// replace with correct function 
-    Auton("Right Side", leftSide), // replace with correct function 
+    Auton("Solo AWP Left", leftSoloAwp), 
+    Auton("Solo AWP Right", rightSoloAwp),// replace with correct function 
+    Auton("Right Side", rightSide), // replace with correct function 
     Auton("Left Side", leftSide),
   });
 
