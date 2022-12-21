@@ -1,9 +1,6 @@
 #include "main.h"
 #include "pros/misc.h"
 #include "autons.hpp"
-#include "catapult.hpp"
-#include "conveyor.hpp"
-#include "roller.hpp"
 /////
 // For instalattion, upgrading, documentations and tutorials, check out website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -18,10 +15,10 @@ Drive chassis (
 
   // Right Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  ,{5, 6, 7}
+  ,{5, 6, 11}
 
   // IMU Port
-  ,8
+  ,9
 
   // Wheel Diameter (Remember, 4" wheels are actually 4.125!)
   //    (or tracking wheel diameter)
@@ -183,9 +180,9 @@ void opcontrol() {
     // . . .
     // Put more user control code here!
     // . . .
-    // move_catapult();    
-    // move_conveyor();
-    // move_roller();
+    move_catapult();    
+    move_conveyor();
+    move_roller();
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }

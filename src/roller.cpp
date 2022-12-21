@@ -1,15 +1,15 @@
 #include "main.h"
+#include "globals.hpp"
 #include "pros/misc.h"
-
-pros::Motor rollerMotor(5);
 
 void move_roller(){
 while (master.get_digital(DIGITAL_L1)){
-    rollerMotor.move_velocity(50); // need to figure out which speed is best for this
+    conveyorRoller.move_velocity(50); // need to figure out which speed is best for this
 }
+conveyorRoller.move_velocity(0);
 }
 
 void auton_roller(){
-    rollerMotor.move_relative(50, 50); // need to figure out what this should be exactly
+    conveyorRoller.move_relative(50, 50); // need to figure out what this should be exactly
     pros::delay(10);
 }

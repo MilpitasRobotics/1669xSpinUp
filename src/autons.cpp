@@ -1,10 +1,9 @@
 #include "autons.hpp"
+#include "globals.hpp"
 #include "main.h"
 #include "pros/adi.hpp"
 #include "pros/misc.h"
 #include "pros/rtos.hpp"
-#include "roller.hpp"
-#include "catapult.hpp"
 
 
 //For Example Now Drive speed For everything is 75

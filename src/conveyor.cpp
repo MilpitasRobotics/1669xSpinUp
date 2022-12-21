@@ -1,6 +1,7 @@
 #include "main.h"
+#include "globals.hpp"
 
-pros::Motor conveyor(9, MOTOR_GEARSET_6, false, MOTOR_ENCODER_DEGREES);
+
 int reverse1 = 1; // determines the direction of the conveyor (-1 is intake, 1 is outtake)
 bool conveyor_lock = false;
 bool conveyor_up = false; // determines whether conveyor will move or not
@@ -18,9 +19,9 @@ void move_conveyor(){ //driver control
   }
 
   if (conveyor_up)
-    conveyor.move_velocity(600*reverse1);
+    conveyorRoller.move_velocity(600*reverse1);
   else
-    conveyor.move_velocity(0);
+    conveyorRoller.move_velocity(0);
 }
 
 /* our code
