@@ -10,7 +10,18 @@ Eugene's suggestions:
 
 Catapult: Ideally one button for pulling back and releasing, but two are possible (one button for pulling back other for releasing)
 
-Intake/Outtake Control: one click of button to start or stop the intake, defaults to intake, holding button reverses to outtake
+Current Code Mapping for Catapult:
+DIGITAL_R1 - move the catapult until it reaches the limit switch (this should be loading position)
+
+DIGITAL_R2 - launch the catapult
+
+
+Current Code Mapping for Intake/Outtake:
+DIGITAL_L1 - One press to start intake, hold to convert into outtake, another press to stop (keep in mind that the intake and the roller share the same motor so if one of them moves the other will move as well)
+
+Current Code Mapping for Roller:
+DIGITAL_L2 -  hold down button to start the roller, stop once released
+
 
 Expansion Activation: Tentatively pressing 4 buttons down to release mechanism
 
