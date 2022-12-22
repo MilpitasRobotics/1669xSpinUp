@@ -4,7 +4,7 @@
 
 void move_roller(){
 while (master.get_digital(DIGITAL_L2)){
-    conveyorRoller.move_velocity(50); // need to figure out which speed is best for this
+    conveyorRoller.move_velocity(-600); // need to figure out which speed is best for this
 }
 conveyorRoller.move_velocity(0);
 }

@@ -11,9 +11,7 @@ Eugene's suggestions:
 Catapult: Ideally one button for pulling back and releasing, but two are possible (one button for pulling back other for releasing)
 
 Current Code Mapping for Catapult:
-DIGITAL_R1 - move the catapult until it reaches the limit switch (this should be loading position)
-
-DIGITAL_R2 - launch the catapult
+DIGITAL_R1 - Pressing this button will fire the catapult, the catapult automatically moves back into loading position once it is fired 
 
 
 Current Code Mapping for Intake/Outtake:
