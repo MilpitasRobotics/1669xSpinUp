@@ -1,5 +1,6 @@
 #include "main.h"
 #include "globals.hpp"
+#include "pros/misc.h"
 
 // This code is not working need to figure out what is going on
 
@@ -21,6 +22,28 @@ void move_conveyor(){ //driver control
 
   if (conveyor_up && catapult_switch.get_value()) // if the catapult is not in loading position, the intake will not run to prevent jamming
     conveyorRoller.move_velocity(600*reverse1);
+  else
+    conveyorRoller.move_velocity(0);
+}
+
+bool isRunning = false;
+int direction = 1;
+bool isReverse = false;
+
+void testConveyor(){ // need to test, right now last year's code is not working (everytime I try to switch to outtake the motor stops)
+  isReverse = false;
+  if (master.get_digital(DIGITAL_L1)){
+    isRunning = !isRunning;
+    isReverse = true;
+  }
+
+  while (master.get_digital(DIGITAL_L1) && isReverse){
+    conveyorRoller.move_velocity(600);
+    pros::delay(10);
+  }
+
+  if (isRunning && catapult_switch.get_value())
+    conveyorRoller.move_velocity(-600);
   else
     conveyorRoller.move_velocity(0);
 }

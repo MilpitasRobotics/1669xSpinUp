@@ -18,7 +18,7 @@ Drive chassis (
   ,{5, 6, 11}
 
   // IMU Port
-  ,9
+  ,15
 
   // Wheel Diameter (Remember, 4" wheels are actually 4.125!)
   //    (or tracking wheel diameter)
@@ -132,23 +132,7 @@ void autonomous() {
   chassis.reset_gyro(); 
   chassis.reset_drive_sensor(); 
   chassis.set_drive_brake(MOTOR_BRAKE_HOLD); 
-
-
-
-
-
-  // ez::print_to_screen(Imu::get_heading);
-
-  // chassis.set_drive_pid(48, 110, true);
-  // chassis.wait_drive();
-  // chassis.reset_pid_targets(); // Resets PID targets to 0
-  // chassis.reset_gyro(); // Reset gyro position to 0
-  // chassis.reset_drive_sensor(); // Reset drive sensors to 0
-  // chassis.set_drive_brake(MOTOR_BRAKE_HOLD); // Set motors to hold.  This helps autonomous consistency.
-
-  // turn_example();
-  // // leftSide();
-  // // ez::as::auton_selector.call_selected_auton(); // Calls selected auton from autonomous selector.
+  ez::as::auton_selector.call_selected_auton(); // Calls selected auton from autonomous selector.
 }
 
 
@@ -181,7 +165,7 @@ void opcontrol() {
     // Put more user control code here!
     // . . .
     move_catapult();    
-    move_conveyor();
+    testConveyor();
     move_roller();
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
