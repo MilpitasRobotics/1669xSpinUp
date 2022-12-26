@@ -1,6 +1,7 @@
 #include "main.h"
 #include "pros/misc.h"
 #include "autons.hpp"
+#include "endgame.hpp"
 /////
 // For instalattion, upgrading, documentations and tutorials, check out website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -64,6 +65,10 @@ void initialize() {
   
   pros::delay(500); // Stop the user from doing anything while legacy ports configure.
 
+  // configure endgame
+  pros::c::adi_pin_mode(2, 0x01); // 2 is mapped to the ADI port B and 0x01 is the value for a digital output
+  pros::c::adi_digital_write('B', true); // B is the ADI port and true is mapped to the HIGH value
+
   // Configure your chassis controls
   chassis.toggle_modify_curve_with_controller(true); // Enables modifying the controller curve with buttons on the joysticks
   chassis.set_active_brake(0); // Sets the active brake kP. We recommend 0.1.
@@ -77,8 +82,8 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
     Auton("Solo AWP Left", leftSoloAwp), 
-    Auton("Solo AWP Right", rightSoloAwp),// replace with correct function 
-    Auton("Right Side", rightSide), // replace with correct function 
+    Auton("Solo AWP Right", rightSoloAwp),
+    Auton("Right Side", rightSide),  
     Auton("Left Side", leftSide),
   });
 
@@ -167,6 +172,7 @@ void opcontrol() {
     move_catapult();    
     testConveyor();
     move_roller();
+    activateEndgame();
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }

@@ -31,13 +31,12 @@ int direction = 1;
 bool isReverse = false;
 
 void testConveyor(){ // need to test, right now last year's code is not working (everytime I try to switch to outtake the motor stops)
-  isReverse = false;
   if (master.get_digital(DIGITAL_L1)){
     isRunning = !isRunning;
-    isReverse = true;
+    isReverse = !isReverse;
   }
 
-  while (master.get_digital(DIGITAL_L1) && isReverse){
+  while (master.get_digital(DIGITAL_L1) && isReverse && catapult_switch.get_value()){
     conveyorRoller.move_velocity(600);
     pros::delay(10);
   }
