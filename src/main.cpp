@@ -66,8 +66,8 @@ void initialize() {
   pros::delay(500); // Stop the user from doing anything while legacy ports configure.
 
   // configure endgame
-  pros::c::adi_pin_mode(2, 0x01); // 2 is mapped to the ADI port B and 0x01 is the value for a digital output
-  pros::c::adi_digital_write('B', true); // B is the ADI port and true is mapped to the HIGH value
+  // pros::c::adi_pin_mode(2, 0x01); // 2 is mapped to the ADI port B and 0x01 is the value for a digital output
+  // pros::c::adi_digital_write('B', true); // B is the ADI port and true is mapped to the HIGH value
 
   // Configure your chassis controls
   chassis.toggle_modify_curve_with_controller(true); // Enables modifying the controller curve with buttons on the joysticks
