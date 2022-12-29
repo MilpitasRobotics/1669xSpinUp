@@ -171,8 +171,8 @@ void opcontrol() {
     // . . .
     move_catapult();    
     testConveyor();
-    move_roller();
-    activateEndgame();
+    // move_roller();
+    // activateEndgame();
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }

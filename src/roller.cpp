@@ -4,7 +4,6 @@
 #include "pros/rtos.hpp"
 
 void move_roller(){
-
 while (master.get_digital(DIGITAL_L1) && master.get_digital(DIGITAL_L2)){
     conveyorRoller.move_velocity(-600); 
     pros::delay(10);
