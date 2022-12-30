@@ -1,7 +1,9 @@
 #include "main.h"
+#include "pros/llemu.hpp"
 #include "pros/misc.h"
 #include "autons.hpp"
 #include "endgame.hpp"
+#include "globals.hpp"
 /////
 // For instalattion, upgrading, documentations and tutorials, check out website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -12,14 +14,14 @@
 Drive chassis (
   // Left Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  {-2, -3, -4} // port 1 was malfunctioning need to figure out what is going on
+  {-5, -6, -11} // port 1 was malfunctioning need to figure out what is going on
 
   // Right Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  ,{5, 6, 11}
+  ,{2, 3, 4}
 
   // IMU Port
-  ,15
+  ,9
 
   // Wheel Diameter (Remember, 4" wheels are actually 4.125!)
   //    (or tracking wheel diameter)
@@ -170,7 +172,8 @@ void opcontrol() {
     // Put more user control code here!
     // . . .
     move_catapult();    
-    testConveyor();
+    // testConveyor();
+    move_conveyor();
     // move_roller();
     // activateEndgame();
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME

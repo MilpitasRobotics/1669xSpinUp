@@ -9,19 +9,18 @@ bool conveyor_lock = false;
 bool conveyor_up = false; // determines whether conveyor will move or not
 
 void move_conveyor(){ //driver control
-  if (master.get_digital(DIGITAL_L1) && !master.get_digital(DIGITAL_L2)) { // this conditional covers stopping and starting the conveyer
+  if (master.get_digital(DIGITAL_L1)) { // this conditional covers stopping and starting the conveyer
     reverse1 = -1; // sets direction of conveyor to intake
     conveyor_up = !conveyor_up; // switches the value of conveyer_up (false --> true, true --> false), takes care of turning the conveyer on and off
     conveyor_lock = true;
-    while(master.get_digital(DIGITAL_L1) && !master.get_digital(DIGITAL_L2))pros::delay(10); // holding down L1 will cause this delay statement to execute until it is released
+    while(master.get_digital(DIGITAL_L1))pros::delay(10); // holding down L1 will cause this delay statement to execute until it is released
   }
-  else if (!master.get_digital(DIGITAL_L1) && conveyor_lock && !master.get_digital(DIGITAL_L2)) { // this elif statement will execute after L1 is held down since L1 will no longer be pressed and conveyer_lock == true
+  else if (!master.get_digital(DIGITAL_L1) && conveyor_lock) { // this elif statement will execute after L1 is held down since L1 will no longer be pressed and conveyer_lock == true
     reverse1 = 1; // sets direction of conveyor to outtake
     conveyor_lock = false; // sets conveyor_lock back to false so that this elif statement does not execute next time function is called
-    conveyor_up = true;
   }
 
-  if (conveyor_up && catapult_switch.get_value()) // if the catapult is not in loading position, the intake will not run to prevent jamming
+  if (conveyor_up) // if the catapult is not in loading position, the intake will not run to prevent jamming
     conveyorRoller.move_velocity(600*reverse1);
   else
     conveyorRoller.move_velocity(0);
@@ -50,4 +49,6 @@ void testConveyor(){ // need to test, right now last year's code is not working 
     conveyorRoller.move_velocity(0);
     counter = 0;
   }
+
+
 }
