@@ -3,8 +3,10 @@
 #include "pros/misc.h"
 #include "pros/rtos.hpp"
 
+pros::Motor conveyorRoller(10, MOTOR_GEARSET_6, false, MOTOR_ENCODER_DEGREES);
+
 void move_roller(){
-while (master.get_digital(DIGITAL_L1) && master.get_digital(DIGITAL_L2)){
+while (master.get_digital(DIGITAL_R2)){
     conveyorRoller.move_velocity(-600); 
     pros::delay(10);
 }
