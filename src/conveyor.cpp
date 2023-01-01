@@ -8,7 +8,6 @@ int reverse1 = 1; // determines the direction of the conveyor (-1 is intake, 1 i
 bool conveyor_lock = false;
 bool conveyor_up = false; // determines whether conveyor will move or not
 
-pros::Motor conveyorRoller(10, MOTOR_GEARSET_6, false, MOTOR_ENCODER_DEGREES);
 
 void move_conveyor(){ //driver control
   if (master.get_digital(DIGITAL_L1)) { // this conditional covers stopping and starting the conveyer

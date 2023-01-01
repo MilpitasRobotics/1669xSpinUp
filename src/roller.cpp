@@ -3,7 +3,7 @@
 #include "pros/misc.h"
 #include "pros/rtos.hpp"
 
-pros::Motor conveyorRoller(10, MOTOR_GEARSET_6, false, MOTOR_ENCODER_DEGREES);
+
 
 void move_roller(){
 while (master.get_digital(DIGITAL_R2)){
