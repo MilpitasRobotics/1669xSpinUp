@@ -172,9 +172,7 @@ void opcontrol() {
     // Put more user control code here!
     // . . .
     move_catapult();    
-    // testConveyor();
-    move_conveyor();
-    // move_roller();
+    move_conveyor_roller();
     // activateEndgame();
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
