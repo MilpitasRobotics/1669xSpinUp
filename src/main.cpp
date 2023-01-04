@@ -14,7 +14,7 @@
 Drive chassis (
   // Left Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  {-3, -8, -10} // port 1 was malfunctioning need to figure out what is going on
+  {-4, -5, -10} // port 1 was malfunctioning need to figure out what is going on
 
   // Right Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
