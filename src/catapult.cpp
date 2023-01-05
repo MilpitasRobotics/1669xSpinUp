@@ -3,25 +3,18 @@
 #include "pros/misc.h"
 #include "pros/rtos.hpp"
 
-// bool asdf = true; //change bool name later idkwhat to put
 void move_catapult(){
-  catapultMotor.set_brake_mode(MOTOR_BRAKE_HOLD);
+  catapultMotor.set_brake_mode(MOTOR_BRAKE_COAST);
   load_catapult();
   if (master.get_digital(DIGITAL_R1)){
-    while(catapult_switch.get_value()){
-      catapultMotor.move_velocity(600);
-    }
-    catapultMotor.move_velocity(0);
+    fire_catapult();
   }
 }
 
 void auton_catapult(){ // this function fires the catapult and sets it back to loading position
-  catapultMotor.set_brake_mode(MOTOR_BRAKE_HOLD);
+  catapultMotor.set_brake_mode(MOTOR_BRAKE_COAST);
   load_catapult();
-  while(catapult_switch.get_value()){
-    catapultMotor.move_velocity(600);
-  }
-  catapultMotor.move_velocity(0);
+  fire_catapult();
   load_catapult();
 }  
     
@@ -31,3 +24,12 @@ void load_catapult(){
     }
   catapultMotor.move_velocity(0);  
 }
+
+void fire_catapult(){
+  while(catapult_switch.get_value()){
+    catapultMotor.move_velocity(600);
+  }
+  catapultMotor.move_velocity(0);
+}
+
+
