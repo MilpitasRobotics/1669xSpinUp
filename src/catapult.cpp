@@ -4,7 +4,7 @@
 #include "pros/rtos.hpp"
 
 void move_catapult(){
-  catapultMotor.set_brake_mode(MOTOR_BRAKE_COAST);
+  catapultMotor.set_brake_mode(MOTOR_BRAKE_HOLD);
   load_catapult();
   if (master.get_digital(DIGITAL_R1)){
     fire_catapult();
@@ -12,7 +12,7 @@ void move_catapult(){
 }
 
 void auton_catapult(){ // this function fires the catapult and sets it back to loading position
-  catapultMotor.set_brake_mode(MOTOR_BRAKE_COAST);
+  catapultMotor.set_brake_mode(MOTOR_BRAKE_HOLD);
   load_catapult();
   fire_catapult();
   load_catapult();

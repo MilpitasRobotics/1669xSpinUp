@@ -8,7 +8,9 @@ void leftSide();
 void rightSide();
 void leftSoloAwp();
 void rightSoloAwp();
-bool isBeingHeld(pros::controller_digital_e_t button);
+double encoderToInches(double encoderUnits);
+void tunePIDFunc();
+void autonWithError();
 
 void default_constants();
 void one_mogo_constants();

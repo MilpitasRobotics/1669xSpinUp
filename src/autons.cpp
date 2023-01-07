@@ -2,8 +2,13 @@
 #include "globals.hpp"
 #include "main.h"
 #include "pros/adi.hpp"
+#include "pros/llemu.h"
+#include "pros/llemu.hpp"
 #include "pros/misc.h"
+#include "pros/motors.h"
 #include "pros/rtos.hpp"
+#include "pros/screen.hpp"
+#include <cmath>
 
 
 //For Example Now Drive speed For everything is 75
@@ -14,9 +19,9 @@ const int DRIVE_SPEED = 110; // This is 110/127 (around 87% of max speed).  We d
 const int TURN_SPEED  = 75;
 const int SWING_SPEED = 75;
 
-const double circum = 3.125*3.141592653589793238462643383279502884197; 
-const double gear_ratio = 0.75;
-const double inches_per_degree = circum/360;
+const double circum = 3.25*M_PI;
+const double gear_ratio = 0.6;
+const double inches_per_degree = circum/360; // drivetrain motors are 900 ticks/revolution 18:1
 
 
 
@@ -28,8 +33,8 @@ const double inches_per_degree = circum/360;
 // If the objects are light or the cog doesn't change much, then there isn't a concern here.
 
 void default_constants() {
-  chassis.set_slew_min_power(80, 80); // Reset this to default
-  chassis.set_slew_distance(7, 7);
+  chassis.set_slew_min_power(127, 127); // Reset this to default
+  chassis.set_slew_distance(1, 1);
   chassis.set_pid_constants(&chassis.headingPID, 11, 0, 20, 0);
   chassis.set_pid_constants(&chassis.forward_drivePID, 0.45, 0, 5, 0);
   chassis.set_pid_constants(&chassis.backward_drivePID, 0.45, 0, 5, 0);
@@ -199,27 +204,29 @@ void rightSoloAwp(){
 // . . .
 // Make your own autonomous functions here!
 // . . .
-
-void leftSide(){
-  // chassis.set_drive_pid(-3.93, DRIVE_SPEED);
-  // chassis.wait_drive();
-  // pros::delay(1000);
-
-  chassis.set_drive_pid(24, DRIVE_SPEED);
-  // chassis.wait_drive();
-  // pros::delay(1000);
-
-  // chassis.set_turn_pid(45, TURN_SPEED);
-  // chassis.wait_drive();
-  // pros::delay(500);
-
-  // chassis.set_drive_pid(59.45, DRIVE_SPEED);
-  // chassis.wait_drive();
-  // pros::delay(1000);
-
-  // chassis.set_turn_pid(-90, TURN_SPEED);
-  // chassis.wait_drive();
-  // pros::delay(500);
-
-}
 */
+
+void tunePIDFunc(){
+  chassis.set_drive_pid(24, DRIVE_SPEED);
+  double avgEncoderUnits = (pros::c::motor_get_encoder_units(16) + pros::c::motor_get_encoder_units(15) + pros::c::motor_get_encoder_units(13))/3.0;
+  pros::lcd::print(1, "Encoder Units: %f", avgEncoderUnits);
+  pros::lcd::print(2, "Inches traveled: %f", encoderToInches(avgEncoderUnits));
+}
+
+void autonWithError(){
+  chassis.set_drive_pid(24, DRIVE_SPEED);
+  while (true) {
+    pros::lcd::print(2, " Left Error: %f  Right Error: %f\n", chassis.leftPID.error, chassis.rightPID.error);
+    pros::delay(ez::util::DELAY_TIME);
+  }
+}
+
+
+double encoderToInches(double encoderUnits){
+  return encoderUnits*inches_per_degree/gear_ratio; 
+}
+
+
+
+
+

@@ -1,7 +1,7 @@
 {
     "py/object": "pros.conductor.project.Project",
     "py/state": {
-        "project_name": "EZ-Template-Example",
+        "project_name": "1669xSpinUp",
         "target": "v5",
         "templates": {
             "EZ-Template": {

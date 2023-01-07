@@ -83,6 +83,8 @@ void initialize() {
   // chassis.set_right_curve_buttons(pros::E_CONTROLLER_DIGITAL_Y,    pros::E_CONTROLLER_DIGITAL_A);
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
+    Auton("PID with error", autonWithError),
+    Auton("Tune PID", tunePIDFunc),
     Auton("Solo AWP Left", leftSoloAwp), 
     Auton("Solo AWP Right", rightSoloAwp),
     Auton("Right Side", rightSide),  
@@ -160,7 +162,7 @@ void autonomous() {
 void opcontrol() {
 
   // This is preference to what you like to drive on.
-  chassis.set_drive_brake(MOTOR_BRAKE_COAST);  
+  chassis.set_drive_brake(MOTOR_BRAKE_HOLD);  
   while (true) {
     // chassis.tank(); // Tank control
     chassis.arcade_standard(ez::SPLIT); // Standard split arcade

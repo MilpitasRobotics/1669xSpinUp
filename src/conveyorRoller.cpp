@@ -30,7 +30,14 @@ void move_conveyor_roller(){ // driver control
     conveyorRoller.move_velocity(0);
 }
 
-void auton_roller(){}
+void auton_roller(){
+  conveyorRoller.move_relative(50, 600);
+}
 
-void conveyor_toggle(bool state){}
+void conveyor_toggle(bool state){
+  if (state)
+    conveyorRoller.move_velocity(-600);
+  else
+    conveyorRoller.move_velocity(0);
+}
 
