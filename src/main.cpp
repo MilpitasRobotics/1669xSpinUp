@@ -4,6 +4,7 @@
 #include "autons.hpp"
 #include "endgame.hpp"
 #include "globals.hpp"
+#include "pros/motors.h"
 /////
 // For instalattion, upgrading, documentations and tutorials, check out website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -29,7 +30,7 @@ Drive chassis (
 
   // Cartridge RPM
   //   (or tick per rotation if using tracking wheels)
-  ,600
+  ,200
 
   // External Gear Ratio (MUST BE DECIMAL)
   //    (or gear ratio of tracking wheel)
@@ -77,6 +78,8 @@ void initialize() {
   chassis.set_curve_default(2.5, 1); // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)  need to change this for smooth controlling
   default_constants(); // Set the drive to your own constants from autons.cpp!
   exit_condition_defaults(); // Set the exit conditions to your own constants from autons.cpp!
+  piston1.set_value(true);
+  piston2.set_value(true);
 
   // These are already defaulted to these buttons, but you can change the left/right curve buttons here!
   // chassis.set_left_curve_buttons (pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT); // If using tank, only the left side is used. 
@@ -140,7 +143,7 @@ void competition_initialize() {
 void autonomous() {
   chassis.reset_gyro(); 
   chassis.reset_drive_sensor(); 
-  chassis.set_drive_brake(MOTOR_BRAKE_HOLD); 
+  chassis.set_drive_brake(MOTOR_BRAKE_COAST); 
   ez::as::auton_selector.call_selected_auton(); // Calls selected auton from autonomous selector.
 }
 
