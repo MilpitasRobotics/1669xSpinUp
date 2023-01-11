@@ -37,7 +37,7 @@ void default_constants() {
   chassis.set_slew_distance(1, 1);
   chassis.set_pid_constants(&chassis.headingPID, 11, 0, 20, 0);
   chassis.set_pid_constants(&chassis.forward_drivePID, 0.35, 0, 6, 0);
-  chassis.set_pid_constants(&chassis.backward_drivePID, 0, 0, 0, 0);
+  chassis.set_pid_constants(&chassis.backward_drivePID, 0.35, 0, 6, 0);
   chassis.set_pid_constants(&chassis.turnPID, 5, 0.003, 35, 15);
   chassis.set_pid_constants(&chassis.swingPID, 7, 0, 45, 0);
 }
@@ -93,7 +93,7 @@ void leftSide() {
   pros::delay(50);
 
   //move to the middle, will measure later, make sure slew is on or we destory motors
-  chassis.set_drive_pid(24, DRIVE_SPEED, true);
+  chassis.set_drive_pid(24, DRIVE_SPEED);
   chassis.wait_drive();
   pros::delay(50);
 
@@ -124,7 +124,7 @@ void leftSoloAwp() {
   pros::delay(50);
 
   //move to the middle, will measure later, make sure slew is on or we destory motors
-  chassis.set_drive_pid(24, DRIVE_SPEED, true);
+  chassis.set_drive_pid(24, DRIVE_SPEED);
   chassis.wait_drive();
   pros::delay(50);
 
@@ -138,7 +138,7 @@ void leftSoloAwp() {
   chassis.set_turn_pid(-90,TURN_SPEED);
   chassis.wait_drive();
   pros::delay(10);
-  chassis.set_drive_pid(24,DRIVE_SPEED, true);
+  chassis.set_drive_pid(-24,DRIVE_SPEED);
   chassis.wait_drive();
 
   //turn 90 degrees right to have the thing rolling the roller facing the roller, then back up into roller
@@ -219,10 +219,10 @@ void autonWithError(){
   chassis.set_drive_pid(24, DRIVE_SPEED);
 //  chassis.wait_drive();
 //  chassis.set_drive_pid(24, DRIVE_SPEED);
-  while (true){
-      pros::lcd::print(2, " Left Error: %f  Right Error: %f\n", chassis.leftPID.error, chassis.rightPID.error);
-      pros::delay(10);
-  }
+  // while (true){
+     // pros::lcd::print(2, " Left Error: %f  Right Error: %f\n", chassis.leftPID.error, chassis.rightPID.error);
+     // pros::delay(10);
+  // }
 }
 
 
