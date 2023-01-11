@@ -17,13 +17,12 @@ void auton_catapult(){ // this function fires the catapult and sets it back to l
   fire_catapult();
   load_catapult();
 }  
-    
-void load_catapult(){
+ void load_catapult_auton(void*){
  while (!catapult_switch.get_value()){
       catapultMotor.move_velocity(600);
     }
   catapultMotor.move_velocity(0);  
-}
+}   
 
 void fire_catapult(){
   while(catapult_switch.get_value()){

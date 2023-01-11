@@ -3,6 +3,7 @@
 #include "pros/misc.h"
 #include "autons.hpp"
 #include "endgame.hpp"
+#include "catapult.hpp"
 #include "globals.hpp"
 #include "pros/motors.h"
 /////
@@ -143,8 +144,10 @@ void competition_initialize() {
 void autonomous() {
   chassis.reset_gyro(); 
   chassis.reset_drive_sensor(); 
+  pros::Task load(load_catapult_auton);
   chassis.set_drive_brake(MOTOR_BRAKE_COAST); 
   ez::as::auton_selector.call_selected_auton(); // Calls selected auton from autonomous selector.
+  load.remove();
 }
 
 
@@ -163,7 +166,6 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-
   // This is preference to what you like to drive on.
   chassis.set_drive_brake(MOTOR_BRAKE_HOLD);  
   while (true) {
