@@ -1,4 +1,5 @@
 #include "autons.hpp"
+#include "EZ-Template/util.hpp"
 #include "globals.hpp"
 #include "main.h"
 #include "pros/adi.hpp"
@@ -36,9 +37,9 @@ void default_constants() {
   chassis.set_slew_min_power(127, 127); // Reset this to default
   chassis.set_slew_distance(1, 1);
   chassis.set_pid_constants(&chassis.headingPID, 11, 0, 20, 0);
-  chassis.set_pid_constants(&chassis.forward_drivePID, 0.35, 0, 6, 0);
-  chassis.set_pid_constants(&chassis.backward_drivePID, 0.35, 0, 6, 0);
-  chassis.set_pid_constants(&chassis.turnPID, 5, 0.003, 35, 15);
+  chassis.set_pid_constants(&chassis.forward_drivePID, 0.68, 0, 5.25, 0);
+  chassis.set_pid_constants(&chassis.backward_drivePID, 0.65, 0, 5.25, 0);
+  chassis.set_pid_constants(&chassis.turnPID, 5.35, 0.003, 35, 15);
   chassis.set_pid_constants(&chassis.swingPID, 7, 0, 45, 0);
 }
 
@@ -208,21 +209,28 @@ void rightSoloAwp(){
 
 void tunePIDFunc(){
     chassis.set_drive_brake(pros::E_MOTOR_BRAKE_COAST);
-  chassis.set_drive_pid(24, DRIVE_SPEED);
-
+    chassis.set_turn_pid(90, TURN_SPEED);
   double avgEncoderUnits = (pros::c::motor_get_encoder_units(16) + pros::c::motor_get_encoder_units(15) + pros::c::motor_get_encoder_units(13))/3.0;
   pros::lcd::print(1, "Encoder Units: %f", avgEncoderUnits);
   pros::lcd::print(2, "Inches traveled: %f", encoderToInches(avgEncoderUnits));
 }
 
 void autonWithError(){
-  chassis.set_drive_pid(24, DRIVE_SPEED);
-//  chassis.wait_drive();
+    load_catapult();
+    conveyor_toggle(true); 
+    chassis.set_swing_pid(ez::RIGHT_SWING, -90, TURN_SPEED);
+    chassis.wait_drive();
+    chassis.set_drive_pid(-40, DRIVE_SPEED);
+    chassis.wait_drive();
+    conveyor_toggle(false);
+    chassis.set_turn_pid(180, TURN_SPEED);
+    fire_catapult();
+
 //  chassis.set_drive_pid(24, DRIVE_SPEED);
-  // while (true){
-     // pros::lcd::print(2, " Left Error: %f  Right Error: %f\n", chassis.leftPID.error, chassis.rightPID.error);
-     // pros::delay(10);
-  // }
+  //while (true){
+      //pros::lcd::print(2, " Left Error: %f  Right Error: %f\n", chassis.leftPID.error, chassis.rightPID.error);
+    //  pros::delay(10);
+  //}
 }
 
 

@@ -30,13 +30,13 @@ Drive chassis (
 
   // Cartridge RPM
   //   (or tick per rotation if using tracking wheels)
-  ,200
+  ,600
 
   // External Gear Ratio (MUST BE DECIMAL)
   //    (or gear ratio of tracking wheel)
   // eg. if your drive is 84:36 where the 36t is powered, your RATIO would be 2.333.
   // eg. if your drive is 36:60 where the 60t is powered, your RATIO would be 0.6.
-  ,0.6  // 36:48 where the 48 is powered so 36/48
+  ,1.6666667  // 36:48 where the 48 is powered so 36/48
 
   // Uncomment if using tracking wheels
   /*
