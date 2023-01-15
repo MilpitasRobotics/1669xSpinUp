@@ -176,7 +176,7 @@ void opcontrol() {
     // Put more user control code here!
     // . . .
     activateEndgame();
-    move_catapult();    
+    move_catapult(85);    
     move_intake_roller();
     
     if(master.get_digital(DIGITAL_LEFT) && master.get_digital(DIGITAL_A)){
