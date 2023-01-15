@@ -76,169 +76,94 @@ void modified_exit_condition() {
 }
 
 
-void leftSide() {
-  //move back, wait 2 seconds to get roller, will implement roller code when it's done
-  chassis.set_drive_pid(-2, DRIVE_SPEED);
+void leftAwp() { // starts off with the roller then avoids discs to shoot into the high goal
+  chassis.set_swing_pid(ez::LEFT_SWING, -30, TURN_SPEED);
   chassis.wait_drive();
   auton_roller();
-  pros::delay(100);
-
-  //move foward towards the center line
-  chassis.set_drive_pid(6, DRIVE_SPEED);
-  chassis.wait_drive();
-  pros::delay(50);
-
-  //turn 45 degrees right, become parallel to the white line
-  chassis.set_turn_pid(45, TURN_SPEED);
-  chassis.wait_drive();
-  pros::delay(50);
-
-  //move to the middle, will measure later, make sure slew is on or we destory motors
-  chassis.set_drive_pid(24, DRIVE_SPEED);
-  chassis.wait_drive();
-  pros::delay(50);
-
-  //turn 90 degrees left to face the goal, will impliment shooting code
-  chassis.set_turn_pid(-90, TURN_SPEED);
-  chassis.wait_drive();
-  pros::delay(10);
-  auton_catapult();
-  pros::delay(10);
-}
-
-
-void leftSoloAwp() {
-  //move back, wait 2 seconds to get roller, will implement roller code when it's done
-  chassis.set_drive_pid(-2, DRIVE_SPEED);
-  chassis.wait_drive();
-  auton_roller();
-  pros::delay(100);
-
-  //move foward towards the center line
-  chassis.set_drive_pid(6, DRIVE_SPEED);
-  chassis.wait_drive();
-  pros::delay(50);
-
-  //turn 45 degrees right, become parallel to the white line
-  chassis.set_turn_pid(45, TURN_SPEED);
-  chassis.wait_drive();
-  pros::delay(50);
-
-  //move to the middle, will measure later, make sure slew is on or we destory motors
-  chassis.set_drive_pid(24, DRIVE_SPEED);
-  chassis.wait_drive();
-  pros::delay(50);
-
-  //turn 90 degrees left to face the goal, will impliment shooting code
-  chassis.set_turn_pid(-90, TURN_SPEED);
-  chassis.wait_drive();
-  pros::delay(10);
-  auton_catapult();
-  pros::delay(10);
-  //turn 90 degrees left, drive using reverse
-  chassis.set_turn_pid(-90,TURN_SPEED);
-  chassis.wait_drive();
-  pros::delay(10);
-  chassis.set_drive_pid(-24,DRIVE_SPEED);
-  chassis.wait_drive();
-
-  //turn 90 degrees right to have the thing rolling the roller facing the roller, then back up into roller
-  chassis.set_turn_pid(90, TURN_SPEED);
-  chassis.wait_drive();
-  chassis.set_drive_pid(-2, DRIVE_SPEED);
-  chassis.wait_drive();
-  auton_roller();
-  //roller code here
-}
-
-void rightSide(){
-  //ROBOT MUST FACE TO THE LEFT
-  chassis.set_drive_pid(30, DRIVE_SPEED);
+  chassis.set_drive_pid(4,DRIVE_SPEED);
   chassis.wait_drive();
   chassis.set_turn_pid(90, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(-2, DRIVE_SPEED);
-  auton_roller();
-  chassis.set_drive_pid(6, DRIVE_SPEED);
+  chassis.set_drive_pid(40,DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(-45, TURN_SPEED);
+  chassis.set_turn_pid(0,TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(24, DRIVE_SPEED);
+  chassis.set_drive_pid(30,DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(90, TURN_SPEED);
+  chassis.set_turn_pid(-35, TURN_SPEED);
   chassis.wait_drive();
+  chassis.set_drive_pid(14, DRIVE_SPEED);
+  chassis.wait_drive();
+  auton_catapult(); 
+  load_catapult(600);
+  auton_intake();
   auton_catapult();
 }
 
-void rightSoloAwp(){
-  //ROBOT MUST FACE TO THE LEFT
-  chassis.set_drive_pid(30, DRIVE_SPEED);
+void rightAwp(){ // starts off with the right side, moves forward shoots, comes back gets the roller
+  chassis.set_drive_pid(22, DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(90, TURN_SPEED);
+  chassis.set_swing_pid(ez::RIGHT_SWING, -45, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(-2, DRIVE_SPEED);
+  chassis.set_drive_pid(-38, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_swing_pid(ez::RIGHT_SWING, 0, TURN_SPEED);
+  chassis.wait_drive();
   auton_roller();
-  chassis.set_drive_pid(6, DRIVE_SPEED);
+}
+
+void soloAwp() { // same as left AWP but added turn, move forward, turn again, get roller
+  chassis.set_swing_pid(ez::LEFT_SWING, -30, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(-45, TURN_SPEED);
+  auton_roller();
+  chassis.set_swing_pid(ez::LEFT_SWING, 0, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(24, DRIVE_SPEED);
+  chassis.set_drive_pid(3.8,DRIVE_SPEED);
   chassis.wait_drive();
   chassis.set_turn_pid(90, TURN_SPEED);
   chassis.wait_drive();
+  chassis.set_drive_pid(40, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(0,TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(30,DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-35, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(14, DRIVE_SPEED);
+  chassis.wait_drive();
+  auton_catapult(); 
+  load_catapult(600);
+  auton_intake();
   auton_catapult();
-  chassis.set_turn_pid(-90, TURN_SPEED);
+  load_catapult(600);
+  chassis.set_swing_pid(ez::LEFT_SWING, -135, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(24, DRIVE_SPEED);
+  intake_toggle(true);
+  chassis.set_drive_pid(-75, DRIVE_SPEED);
+  //chassis.wait_until(-70);
+  //intake_toggle(false);
   chassis.wait_drive();
-  chassis.set_turn_pid(45, DRIVE_SPEED);
-  chassis.wait_drive();
-  chassis.set_drive_pid(-6, DRIVE_SPEED);
+  intake_toggle(false);
+  chassis.set_swing_pid(ez::RIGHT_SWING, -120, TURN_SPEED);
   chassis.wait_drive();
   auton_roller();
+  }
 
+void justRoller(){
+ 
+}
 
+void testFunc(){
+  intake_toggle(true);
+  chassis.set_drive_pid(-48, DRIVE_SPEED);
+  chassis.wait_until(-24);
+  intake_toggle(false);
+  chassis.wait_drive();
 }
 
 /* 
-
 // . . .
 // Make your own autonomous functions here!
 // . . .
 */
-
-void tunePIDFunc(){
-    chassis.set_drive_brake(pros::E_MOTOR_BRAKE_COAST);
-    chassis.set_turn_pid(90, TURN_SPEED);
-  double avgEncoderUnits = (pros::c::motor_get_encoder_units(16) + pros::c::motor_get_encoder_units(15) + pros::c::motor_get_encoder_units(13))/3.0;
-  pros::lcd::print(1, "Encoder Units: %f", avgEncoderUnits);
-  pros::lcd::print(2, "Inches traveled: %f", encoderToInches(avgEncoderUnits));
-}
-
-void autonWithError(){
-    load_catapult();
-    conveyor_toggle(true); 
-    chassis.set_swing_pid(ez::RIGHT_SWING, -90, TURN_SPEED);
-    chassis.wait_drive();
-    chassis.set_drive_pid(-40, DRIVE_SPEED);
-    chassis.wait_drive();
-    conveyor_toggle(false);
-    chassis.set_turn_pid(180, TURN_SPEED);
-    fire_catapult();
-
-//  chassis.set_drive_pid(24, DRIVE_SPEED);
-  //while (true){
-      //pros::lcd::print(2, " Left Error: %f  Right Error: %f\n", chassis.leftPID.error, chassis.rightPID.error);
-    //  pros::delay(10);
-  //}
-}
-
-
-double encoderToInches(double encoderUnits){
-  return encoderUnits*inches_per_degree/gear_ratio; 
-}
-
-
-
-
-

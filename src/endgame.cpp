@@ -1,16 +1,26 @@
 #include "main.h"
 #include "globals.hpp"
 #include "pros/adi.h"
+#include "pros/adi.hpp"
 #include "pros/misc.h"
 #include "pros/rtos.hpp"
 
+pros::ADIDigitalOut piston1('B');
 void activateEndgame(){
-    if (master.get_digital(DIGITAL_L1) && master.get_digital(DIGITAL_L2) && master.get_digital(DIGITAL_R1) && master.get_digital(DIGITAL_R2) ){
-        // pros::c::adi_digital_write(2, false); // B is the ADI port and false is mapped to the LOW value, might need to change this depending on how endgame is set up
-        piston1.set_value(false);
-        piston2.set_value(false); // might be as simple as this, I think the previous way is the C way to do it
-        pros::delay(1000);
-        piston1.set_value(true);
-        piston2.set_value(true);
-    }
+    // bool activate = master.get_digital(DIGITAL_LEFT) && master.get_digital(DIGITAL_A);
+    // if (activate && master.get_digital(DIGITAL_L1)){
+       // piston1.set_value(false);
+     //   pros::delay(1000);
+       // piston1.set_value(true);
+    //} else if (activate && master.get_digital(DIGITAL_R1)){
+    //    piston2.set_value(false); 
+    //    pros::delay(1000);
+    //    piston2.set_value(true);
+    //}
+
+    
+}
+
+void endgameToggle(bool toggle){
+ piston1.set_value(toggle);
 }

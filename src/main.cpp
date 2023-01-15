@@ -16,11 +16,11 @@
 Drive chassis (
   // Left Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  {10, 6, 2} // port 1 was malfunctioning need to figure out what is going on
+  {-10, -6, -2} // port 1 was malfunctioning need to figure out what is going on
 
   // Right Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  ,{-13, -15, -16}
+  ,{13, 15, 16}
 
   // IMU Port
   ,19
@@ -79,20 +79,18 @@ void initialize() {
   chassis.set_curve_default(2.5, 1); // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)  need to change this for smooth controlling
   default_constants(); // Set the drive to your own constants from autons.cpp!
   exit_condition_defaults(); // Set the exit conditions to your own constants from autons.cpp!
-  piston1.set_value(true);
-  piston2.set_value(true);
+  endgameToggle(false);
+  // piston2.set_value(true);
 
   // These are already defaulted to these buttons, but you can change the left/right curve buttons here!
   // chassis.set_left_curve_buttons (pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT); // If using tank, only the left side is used. 
   // chassis.set_right_curve_buttons(pros::E_CONTROLLER_DIGITAL_Y,    pros::E_CONTROLLER_DIGITAL_A);
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("PID with error", autonWithError),
-    Auton("Tune PID", tunePIDFunc),
-    Auton("Solo AWP Left", leftSoloAwp), 
-    Auton("Solo AWP Right", rightSoloAwp),
-    Auton("Right Side", rightSide),  
-    Auton("Left Side", leftSide),
+    Auton("Left AWP (Start at roller)", leftAwp), 
+    Auton("Right AWP", rightAwp),
+    Auton("Solo AWP", soloAwp),
+    Auton("Just Roller", justRoller),  
   });
 
   // Initialize chassis and auton selector
@@ -144,10 +142,9 @@ void competition_initialize() {
 void autonomous() {
   chassis.reset_gyro(); 
   chassis.reset_drive_sensor(); 
-  pros::Task load(load_catapult_auton);
   chassis.set_drive_brake(MOTOR_BRAKE_COAST); 
   ez::as::auton_selector.call_selected_auton(); // Calls selected auton from autonomous selector.
-  load.remove();
+  // load.remove();
 }
 
 
@@ -178,9 +175,13 @@ void opcontrol() {
     // . . .
     // Put more user control code here!
     // . . .
+    activateEndgame();
     move_catapult();    
-    move_conveyor_roller();
-    // activateEndgame();
+    move_intake_roller();
+    
+    if(master.get_digital(DIGITAL_LEFT) && master.get_digital(DIGITAL_A)){
+      endgameToggle(true);
+    }
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }

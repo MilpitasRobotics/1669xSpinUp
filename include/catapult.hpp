@@ -1,5 +1,2 @@
-void move_catapult();
+void move_catapult(double speed);
 void auton_catapult();
-void load_catapult();
-void load_catapult_auton(void*);
-void fire_catapult();
