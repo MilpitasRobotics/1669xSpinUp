@@ -25,7 +25,7 @@ void move_intake_roller(){ // driver control
 
   if (intake_on && catapult_switch.get_value()) // if the catapult is not in loading position, the intake will not run to prevent jamming
     intakeRoller.move_velocity(-600 * direction);
-  else if (roller_on) // activates roller
+  else if (roller_on && catapult_switch.get_value()) // activates roller
     intakeRoller.move_velocity(-600);
   else
     intakeRoller.move_velocity(0);

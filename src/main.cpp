@@ -69,10 +69,6 @@ void initialize() {
   
   pros::delay(500); // Stop the user from doing anything while legacy ports configure.
 
-  // configure endgame
-  // pros::c::adi_pin_mode(2, 0x01); // 2 is mapped to the ADI port B and 0x01 is the value for a digital output
-  // pros::c::adi_digital_write('B', true); // B is the ADI port and true is mapped to the HIGH value
-
   // Configure your chassis controls
   chassis.toggle_modify_curve_with_controller(true); // Enables modifying the controller curve with buttons on the joysticks
   chassis.set_active_brake(0); // Sets the active brake kP. We recommend 0.1.
@@ -139,12 +135,22 @@ void competition_initialize() {
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
+
+
 void autonomous() {
+  stopCata = true;
   chassis.reset_gyro(); 
   chassis.reset_drive_sensor(); 
   chassis.set_drive_brake(MOTOR_BRAKE_COAST); 
+  pros::Task load{[=] { // lambda (anonymous) function for load
+   if (!catapult_switch.get_value()) catapultMotor.move_velocity(600);
+   else if (catapult_switch.get_value() && stopCata){
+      catapultMotor.move_velocity(0);
+      stopCata = false; // so that velocity is set to 0 only once
+      } // create bool and set it to false inside elif, true in fire function, make it global
+  }};
   ez::as::auton_selector.call_selected_auton(); // Calls selected auton from autonomous selector.
-  // load.remove();
+  load.remove();
 }
 
 
@@ -166,6 +172,8 @@ void opcontrol() {
   // This is preference to what you like to drive on.
   chassis.set_drive_brake(MOTOR_BRAKE_HOLD);  
   while (true) {
+    move_catapult(85);    
+    pros::delay(100);
     // chassis.tank(); // Tank control
     chassis.arcade_standard(ez::SPLIT); // Standard split arcade
     // chassis.arcade_standard(ez::SINGLE); // Standard single arcade
@@ -176,7 +184,6 @@ void opcontrol() {
     // Put more user control code here!
     // . . .
     activateEndgame();
-    move_catapult(85);    
     move_intake_roller();
     
     if(master.get_digital(DIGITAL_LEFT) && master.get_digital(DIGITAL_A)){

@@ -6,3 +6,5 @@ pros::Motor intakeRoller(9, MOTOR_GEARSET_6, false, MOTOR_ENCODER_DEGREES);
 pros::ADIDigitalIn catapult_switch ('H'); 
 pros::ADIDigitalOut piston2 ('D');
 pros::Motor catapultMotor(11); 
+
+bool stopCata; 

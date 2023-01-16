@@ -20,12 +20,6 @@ const int DRIVE_SPEED = 110; // This is 110/127 (around 87% of max speed).  We d
 const int TURN_SPEED  = 75;
 const int SWING_SPEED = 75;
 
-const double circum = 3.25*M_PI;
-const double gear_ratio = 0.6;
-const double inches_per_degree = circum/360; // drivetrain motors are 900 ticks/revolution 18:1
-
-
-
 ///
 // Constants
 ///
@@ -95,7 +89,7 @@ void leftAwp() { // starts off with the roller then avoids discs to shoot into t
   chassis.set_drive_pid(14, DRIVE_SPEED);
   chassis.wait_drive();
   auton_catapult(); 
-  load_catapult(600);
+  // load_catapult(600);
   auton_intake();
   auton_catapult();
 }
@@ -133,10 +127,10 @@ void soloAwp() { // same as left AWP but added turn, move forward, turn again, g
   chassis.set_drive_pid(14, DRIVE_SPEED);
   chassis.wait_drive();
   auton_catapult(); 
-  load_catapult(600);
+  // load_catapult(600);
   auton_intake();
   auton_catapult();
-  load_catapult(600);
+  // load_catapult(600);
   chassis.set_swing_pid(ez::LEFT_SWING, -135, TURN_SPEED);
   chassis.wait_drive();
   intake_toggle(true);

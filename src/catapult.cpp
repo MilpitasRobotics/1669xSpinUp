@@ -29,12 +29,11 @@ void move_catapult(double speed){
     catapultMotor.move_velocity(600);
     stop = true;
   } // else if (!catapult_switch.get_value()) catapultMotor.move_velocity(0); this should not be necessary
-  
 }
 
-void auton_catapult(){ // this function fires the catapult and sets it back to loading position
+void fire_catapult(){ // this function fires the catapult and sets it back to loading position
   catapultMotor.set_brake_mode(MOTOR_BRAKE_HOLD);
-  // load_catapult(600);
-  // fire_catapult();
-  // load_catapult(600);
+  while(catapult_switch.get_value()) catapultMotor.move_velocity(600);
+  catapultMotor.move_velocity(0);
+  stopCata = true;
 }   
