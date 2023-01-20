@@ -5,12 +5,16 @@
 bool fireCatapult = false;
 bool canFire = false;
 bool stop = true; // this code might work fine without this boolean bc of the positioning of if statements
+bool isEnabled = true;
 
 void move_catapult(double speed){
   catapultMotor.set_brake_mode(MOTOR_BRAKE_HOLD);
+  if(master.get_digital_new_press(DIGITAL_B)) isEnabled = !isEnabled; // pressing B on the controller will toggle catapult on/off 
+
+  if(!isEnabled) catapultMotor.move_velocity(0);
 
   // loading if statement
-  if (!catapult_switch.get_value()){
+  if (!catapult_switch.get_value() && isEnabled){
     catapultMotor.move_velocity(speed);
     canFire = false;
     pros::delay(10);
@@ -25,7 +29,7 @@ void move_catapult(double speed){
     stop = false;
   }
 
-  if (fireCatapult && catapult_switch.get_value()){
+  if (fireCatapult && catapult_switch.get_value() && isEnabled){
     catapultMotor.move_velocity(600);
     stop = true;
   } // else if (!catapult_switch.get_value()) catapultMotor.move_velocity(0); this should not be necessary
