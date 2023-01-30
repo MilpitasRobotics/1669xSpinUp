@@ -6,6 +6,7 @@
 #include "catapult.hpp"
 #include "globals.hpp"
 #include "pros/motors.h"
+#include "pros/rtos.hpp"
 /////
 // For instalattion, upgrading, documentations and tutorials, check out website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -83,6 +84,7 @@ void initialize() {
   // chassis.set_right_curve_buttons(pros::E_CONTROLLER_DIGITAL_Y,    pros::E_CONTROLLER_DIGITAL_A);
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
+    Auton("Test Func", testFunc),
     Auton("Left AWP (Start at roller)", leftAwp), 
     Auton("Right AWP", rightAwp),
     Auton("Solo AWP", soloAwp),
@@ -142,15 +144,18 @@ void autonomous() {
   chassis.reset_gyro(); 
   chassis.reset_drive_sensor(); 
   chassis.set_drive_brake(MOTOR_BRAKE_COAST); 
-  pros::Task load{[=] { // lambda (anonymous) function for load
+  pros::Task load{[=] { // lambda (anonymous)function for load (try inside while loop if doesnt work)
+  while(true){
    if (!catapult_switch.get_value()) catapultMotor.move_velocity(600);
    else if (catapult_switch.get_value() && stopCata){
       catapultMotor.move_velocity(0);
-      stopCata = false; // so that velocity is set to 0 only once
+      stopCata = false; // so that else if does not prevent catapult from shooting 
       } // create bool and set it to false inside elif, true in fire function, make it global
+      pros::delay(20);
+    }
   }};
   ez::as::auton_selector.call_selected_auton(); // Calls selected auton from autonomous selector.
-  load.remove();
+  // load.remove();
 }
 
 
@@ -170,10 +175,10 @@ void autonomous() {
  */
 void opcontrol() {
   // This is preference to what you like to drive on.
-  chassis.set_drive_brake(MOTOR_BRAKE_HOLD);  
+  chassis.set_drive_brake(MOTOR_BRAKE_COAST);  
+
   while (true) {
-    move_catapult(85);    
-    pros::delay(100);
+    move_catapult(185);    
     // chassis.tank(); // Tank control
     chassis.arcade_standard(ez::SPLIT); // Standard split arcade
     // chassis.arcade_standard(ez::SINGLE); // Standard single arcade
@@ -186,9 +191,6 @@ void opcontrol() {
     activateEndgame();
     move_intake_roller();
     
-    if(master.get_digital(DIGITAL_LEFT) && master.get_digital(DIGITAL_A)){
-      endgameToggle(true);
-    }
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }
