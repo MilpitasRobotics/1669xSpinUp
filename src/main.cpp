@@ -1,3 +1,4 @@
+#pragma once
 #include "main.h"
 #include "pros/llemu.hpp"
 #include "pros/misc.h"
@@ -151,7 +152,7 @@ void autonomous() {
       catapultMotor.move_velocity(0);
       stopCata = false; // so that else if does not prevent catapult from shooting 
       } // create bool and set it to false inside elif, true in fire function, make it global
-      pros::delay(20);
+      pros::Task::delay(20);
     }
   }};
   ez::as::auton_selector.call_selected_auton(); // Calls selected auton from autonomous selector.
@@ -178,7 +179,7 @@ void opcontrol() {
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);  
 
   while (true) {
-    move_catapult(185);    
+    move_catapult(600);    
     // chassis.tank(); // Tank control
     chassis.arcade_standard(ez::SPLIT); // Standard split arcade
     // chassis.arcade_standard(ez::SINGLE); // Standard single arcade

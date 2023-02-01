@@ -148,7 +148,7 @@ void testFunc(){
   pros::delay(100);
   chassis.set_drive_pid(48, DRIVE_SPEED);
   chassis.wait_drive();
-  pros::delay(2000);
+  pros::delay(200);
 
 }
 
