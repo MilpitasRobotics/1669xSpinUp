@@ -1,4 +1,6 @@
 #include "main.h"
+#include "EZ-Template/sdcard.hpp"
+#include "pros/adi.hpp"
 #include "pros/llemu.hpp"
 #include "pros/misc.h"
 #include "autons.hpp"
@@ -7,6 +9,9 @@
 #include "globals.hpp"
 #include "pros/motors.h"
 #include "pros/rtos.hpp"
+
+pros::ADIDigitalIn toggleAuton('D');
+
 /////
 // For instalattion, upgrading, documentations and tutorials, check out website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -94,8 +99,7 @@ void initialize() {
   // Initialize chassis and auton selector
   chassis.initialize();
   ez::as::initialize();
-
-
+  ez::as::limit_switch_lcd_initialize(&toggleAuton);
 }
 
 
@@ -121,7 +125,6 @@ void disabled() {
  * starts.
  */
 void competition_initialize() {
-  // . . .
 }
 
 
