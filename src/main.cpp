@@ -143,16 +143,13 @@ void autonomous() {
   stopCata = true;
   chassis.reset_gyro(); 
   chassis.reset_drive_sensor(); 
-  chassis.set_drive_brake(MOTOR_BRAKE_COAST); 
-  pros::Task load{[=] { // lambda (anonymous)function for load (try inside while loop if doesnt work)
+  chassis.set_drive_brake(MOTOR_BRAKE_HOLD); 
+  pros::Task load{[=] { // lambda (anonymous)function for load 
   while(true){
    if (!catapult_switch.get_value()) catapultMotor.move_velocity(600);
-   else if (catapult_switch.get_value() && stopCata){
-      catapultMotor.move_velocity(0);
-      stopCata = false; // so that else if does not prevent catapult from shooting 
-      } // create bool and set it to false inside elif, true in fire function, make it global
-      pros::Task::delay(20);
-    }
+   else if (catapult_switch.get_value()) catapultMotor.move_velocity(0);
+   pros::Task::delay(20);
+  }
   }};
   ez::as::auton_selector.call_selected_auton(); // Calls selected auton from autonomous selector.
   // load.remove();
