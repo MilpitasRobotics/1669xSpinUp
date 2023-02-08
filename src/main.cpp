@@ -1,5 +1,4 @@
 #include "main.h"
-#include "EZ-Template/sdcard.hpp"
 #include "pros/adi.hpp"
 #include "pros/llemu.hpp"
 #include "pros/misc.h"
@@ -89,17 +88,15 @@ void initialize() {
   // chassis.set_right_curve_buttons(pros::E_CONTROLLER_DIGITAL_Y,    pros::E_CONTROLLER_DIGITAL_A);
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("Test Func", testFunc),
-    Auton("Left AWP (Start at roller)", leftAwp), 
-    Auton("Right AWP", rightAwp),
-    Auton("Solo AWP", soloAwp),
-    Auton("Just Roller", justRoller),  
+    Auton("Right AWP (start away from roller)", rightAwp),
+    Auton("Left AWP (start at roller)", leftAwp), 
+    Auton("Solo AWP (start at roller)", soloAwp),
   });
 
   // Initialize chassis and auton selector
   chassis.initialize();
   ez::as::initialize();
-  ez::as::limit_switch_lcd_initialize(&toggleAuton);
+  // ez::as::limit_switch_lcd_initialize(&toggleAuton);
 }
 
 
@@ -111,7 +108,7 @@ void initialize() {
  */
 void disabled() {
   // . . .
-}
+    }
 
 
 
@@ -178,7 +175,7 @@ void opcontrol() {
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);  
 
   while (true) {
-    move_catapult(600);    
+    move_catapult(100);    
     // chassis.tank(); // Tank control
     chassis.arcade_standard(ez::SPLIT); // Standard split arcade
     // chassis.arcade_standard(ez::SINGLE); // Standard single arcade

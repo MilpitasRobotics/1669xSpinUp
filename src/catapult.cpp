@@ -22,6 +22,7 @@ catapultMotor.set_brake_mode(MOTOR_BRAKE_COAST);
   if (!catapult_switch.get_value() && isEnabled){
     catapultMotor.move_velocity(speed);
     canFire = false;
+    fireCatapult = false;
     pros::delay(10);
   }else if (stop && catapult_switch.get_value()){ // executes and tells catapult to stop at bottom
     catapultMotor.move_velocity(0);  
@@ -35,13 +36,12 @@ catapultMotor.set_brake_mode(MOTOR_BRAKE_COAST);
   }
 
   if (fireCatapult && catapult_switch.get_value() && isEnabled){
-    while(catapult_switch.get_value())catapultMotor.move_velocity(600);
+    while(catapult_switch.get_value())catapultMotor.move_velocity(speed);
     stop = true;
   } // else if (!catapult_switch.get_value()) catapultMotor.move_velocity(0); this should not be necessary
 }
 
 void fire_catapult(){ // this function fires the catapult and sets it back to loading position
-  catapultMotor.set_brake_mode(MOTOR_BRAKE_COAST);
   while(catapult_switch.get_value()) catapultMotor.move_velocity(600);
   catapultMotor.move_velocity(0);
   stopCata = true;
