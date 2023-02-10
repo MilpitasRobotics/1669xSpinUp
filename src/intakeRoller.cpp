@@ -32,7 +32,7 @@ void move_intake_roller(){ // driver control
 }
 
 void auton_roller(){
-  intakeRoller.move_relative(-2250, 600);
+  intakeRoller.move_relative(250, 600);
 }
 
 void auton_intake(){
