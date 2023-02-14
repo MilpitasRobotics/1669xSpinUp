@@ -35,6 +35,10 @@ void auton_roller(){
   intakeRoller.move_relative(250, 600);
 }
 
+void skills_roller(){
+    intakeRoller.move_relative(750, 600);
+}
+
 void auton_intake(){
  intake_toggle(true);
  pros::delay(500);

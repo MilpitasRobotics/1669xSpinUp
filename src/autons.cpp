@@ -246,10 +246,7 @@ void testFunc(){
 void progSkills(){
   chassis.set_drive_pid(-3, DRIVE_SPEED);
   chassis.wait_drive();
-  auton_roller();
-  auton_roller();
-  auton_roller();
-  auton_roller();
+  skills_roller(); 
   pros::delay(750);
    chassis.set_drive_pid(17, DRIVE_SPEED);
   chassis.wait_drive();
@@ -260,11 +257,8 @@ void progSkills(){
   chassis.wait_until(28);
   intake_toggle(false);
   chassis.wait_drive();
-  auton_roller();
-  auton_roller();
-  auton_roller();
+  skills_roller();
   pros::delay(750);
-  
   chassis.set_drive_pid(6, DRIVE_SPEED);
   chassis.wait_drive();
   chassis.set_turn_pid(0, TURN_SPEED);
@@ -339,18 +333,14 @@ void progSkills(){
   intake_toggle(false);
   chassis.set_drive_pid(-2, 85);
   chassis.wait_drive();
-  auton_roller();
-  auton_roller();
-  auton_roller();
+  skills_roller();
   chassis.set_drive_pid(24, DRIVE_SPEED);
   chassis.wait_drive();
   chassis.set_turn_pid(-180, TURN_SPEED);
   chassis.wait_drive();
   chassis.set_drive_pid(-28, DRIVE_SPEED);
   chassis.wait_drive();
-  auton_roller();
-  auton_roller();
-  auton_roller();
+  skills_roller();
   chassis.set_drive_pid(90, DRIVE_SPEED);
   chassis.wait_drive();
   chassis.set_turn_pid(190, TURN_SPEED);
