@@ -21,7 +21,7 @@ pros::ADIDigitalIn toggleAuton('D');
 Drive chassis (
   // Left Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  {-10, -6, -2} // port 1 was malfunctioning need to figure out what is going on
+  {-10, -5, -3} // port 1 was malfunctioning need to figure out what is going on
 
   // Right Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
@@ -146,6 +146,7 @@ void autonomous() {
   chassis.reset_gyro(); 
   chassis.reset_drive_sensor(); 
   chassis.set_drive_brake(MOTOR_BRAKE_HOLD); 
+  intakeRoller.set_brake_mode(MOTOR_BRAKE_HOLD);
   pros::Task load{[=] { // lambda (anonymous)function for load 
   while(true){
    if (!catapult_switch.get_value()) catapultMotor.move_velocity(600);
