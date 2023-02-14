@@ -343,23 +343,34 @@ void progSkills(){
   skills_roller();
   chassis.set_drive_pid(90, DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(190, TURN_SPEED);
+  chassis.set_turn_pid(-190, TURN_SPEED);
   chassis.wait_drive();
   fire_catapult();
   pros::delay(500);
-  chassis.set_turn_pid(180, TURN_SPEED);
+  chassis.set_turn_pid(-180, TURN_SPEED);
   chassis.wait_drive();
   chassis.set_drive_pid(-50, DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(45, DRIVE_SPEED);
+  chassis.set_turn_pid(35, TURN_SPEED);
   chassis.wait_drive();
+  intake_toggle(true);
   chassis.set_drive_pid(-50, 50);
   chassis.wait_drive();
+  intake_toggle(false);
   chassis.set_turn_pid(135, TURN_SPEED);
   chassis.wait_drive();
   chassis.set_drive_pid(10, DRIVE_SPEED);
   fire_catapult();
   pros::delay(500);
+  chassis.set_drive_pid(-30, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(45, TURN_SPEED);
+  chassis.wait_drive();
+  chasiss.set_drive_pid(-60,DRIVE_SPEED);
+  chassis.wait_drive();
+  //endgameToggle(true);
+
+
 
   
    // remember to switch all signs (assumes that task for loading cata works)
