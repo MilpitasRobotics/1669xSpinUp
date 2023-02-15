@@ -21,7 +21,7 @@ pros::ADIDigitalIn toggleAuton('D');
 Drive chassis (
   // Left Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  {-10, -5, -3} // port 1 was malfunctioning need to figure out what is going on
+  {-10, -5, -6} // port 1 was malfunctioning need to figure out what is going on
 
   // Right Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
@@ -178,7 +178,7 @@ void opcontrol() {
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);  
 
   while (true) {
-    move_catapult(100);    
+    move_catapult(600);    
     // chassis.tank(); // Tank control
     chassis.arcade_standard(ez::SPLIT); // Standard split arcade
     // chassis.arcade_standard(ez::SINGLE); // Standard single arcade

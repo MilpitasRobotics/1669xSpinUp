@@ -36,7 +36,7 @@ void auton_roller(){
 }
 
 void skills_roller(){
-    intakeRoller.move_relative(750, 600);
+    intakeRoller.move_relative(530, 600);
 }
 
 void auton_intake(){
