@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Driver Prog Spin Up",
+    "project_name": "Auton Prog Spin Up",
     "target": "v5",
     "templates": {
       "kernel": {
