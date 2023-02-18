@@ -7,7 +7,7 @@
 *.elf
 
 # PROS
-bin/
+bin/ \n !bin/cold.package.bin \n !bin/cold.package.elf
 .vscode/
 .cache/
 compile_commands.json

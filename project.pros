@@ -1,7 +1,7 @@
 {
     "py/object": "pros.conductor.project.Project",
     "py/state": {
-        "project_name": "EZ-Template",
+        "project_name": "Auton Prog Spin Up",
         "target": "v5",
         "templates": {
             "kernel": {
@@ -313,7 +313,7 @@
             "compress_bin": true,
             "description": "making code ez-pz",
             "remote_name": "EZ-Template",
-            "slot": 1
+            "slot": 2
         }
     }
 }
