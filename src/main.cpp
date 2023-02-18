@@ -175,7 +175,7 @@ void autonomous() {
 void opcontrol() {
   // This is preference to what you like to drive on.
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);  
-
+  autonBoost.set_value(true);
   while (true) {
     move_catapult(600);    
     // chassis.tank(); // Tank control
@@ -187,6 +187,7 @@ void opcontrol() {
     // . . .
     // Put more user control code here!
     // . . .
+    if(master.get_digital(DIGITAL_B)) autonBoost.set_value(false);
     activateEndgame();
     move_intake_roller();
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
