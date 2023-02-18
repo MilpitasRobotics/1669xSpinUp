@@ -5,6 +5,8 @@
 pros::Motor intakeRoller(9, MOTOR_GEARSET_6, false, MOTOR_ENCODER_DEGREES);
 pros::ADIDigitalIn catapult_switch ('H'); 
 pros::ADIDigitalOut piston2 ('D');
+pros::ADIDigitalOut autonBoost('F');
 pros::Motor catapultMotor(1); 
 
-bool stopCata; 
+bool toggle = false; 
+bool toggle2 = false;

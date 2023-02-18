@@ -142,7 +142,6 @@ void competition_initialize() {
 
 
 void autonomous() {
-  stopCata = true;
   chassis.reset_gyro(); 
   chassis.reset_drive_sensor(); 
   chassis.set_drive_brake(MOTOR_BRAKE_HOLD); 
@@ -190,7 +189,6 @@ void opcontrol() {
     // . . .
     activateEndgame();
     move_intake_roller();
-    
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }
