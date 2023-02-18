@@ -88,11 +88,9 @@ void initialize() {
   // chassis.set_right_curve_buttons(pros::E_CONTROLLER_DIGITAL_Y,    pros::E_CONTROLLER_DIGITAL_A);
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("progf (start at roller)", progSkills),
     Auton("Solo AWP (start at roller)", soloAwp),
-    Auton("Left AWP (start at roller)", leftAwp), 
     Auton("Right AWP (start away from roller)", rightAwp),
-    
+    Auton("Left AWP (start at roller)", leftAwp), 
   });
 
   // Initialize chassis and auton selector
@@ -187,7 +185,6 @@ void opcontrol() {
     // . . .
     // Put more user control code here!
     // . . .
-    if(master.get_digital(DIGITAL_B)) autonBoost.set_value(false);
     activateEndgame();
     move_intake_roller();
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
