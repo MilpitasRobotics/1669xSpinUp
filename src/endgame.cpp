@@ -8,7 +8,7 @@
 
 pros::ADIDigitalOut piston1('B');
 void activateEndgame(){
-    if(master.get_digital_new_press(DIGITAL_LEFT) && master.get_digital_new_press(DIGITAL_A)){
+    if(master.get_digital(DIGITAL_LEFT) && master.get_digital(DIGITAL_A)){
       endgameToggle(true); 
     }
 }

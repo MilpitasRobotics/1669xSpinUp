@@ -10,6 +10,7 @@ void rightAwp();
 void justRoller();
 void testFunc();
 void progSkills();
+void doNothing();
 
 void default_constants();
 void one_mogo_constants();

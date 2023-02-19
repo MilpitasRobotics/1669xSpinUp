@@ -154,7 +154,7 @@ void soloAwp() { // same as left AWP but added turn, move forward, turn again, g
   chassis.wait_until(-10);
   chassis.set_max_speed(30);
   chassis.wait_drive();
-  chassis.set_drive_pid(-36,25);
+  chassis.set_drive_pid(-27,25);
   chassis.wait_drive();
   pros::delay(750);
   intake_toggle(false);
@@ -513,7 +513,8 @@ void progSkills(){
   endgameToggle(true); */
 }
 
-
+void doNothing(){
+}
 
 /* 
 // . . .

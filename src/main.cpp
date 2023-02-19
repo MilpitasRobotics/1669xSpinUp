@@ -89,6 +89,7 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
     Auton("Solo AWP (start at roller)", soloAwp),
+    Auton("Do nothing (start away from roller)", doNothing),
     Auton("Right AWP (start away from roller)", rightAwp),
     Auton("Left AWP (start at roller)", leftAwp), 
   });
