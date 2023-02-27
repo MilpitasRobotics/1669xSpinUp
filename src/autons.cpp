@@ -100,8 +100,11 @@ void rightAwp(){ // gets roller then shoots 5 discs into the high goal
   chassis.wait_drive();
   chassis.set_swing_pid(ez::RIGHT_SWING, 95, SWING_SPEED);
   chassis.wait_drive();
+  chassis.set_drive_pid(-1.5, DRIVE_SPEED);
+  chassis.wait_drive();
+  pros::delay(250);
   auton_roller();
-  chassis.set_drive_pid(3, DRIVE_SPEED);
+  chassis.set_drive_pid(4, DRIVE_SPEED);
   chassis.wait_drive();
   chassis.set_turn_pid(225, TURN_SPEED);
   chassis.wait_drive();
@@ -111,16 +114,16 @@ void rightAwp(){ // gets roller then shoots 5 discs into the high goal
   chassis.wait_drive();
   pros::delay(750);
   intake_toggle(false);
-  chassis.set_turn_pid(116, TURN_SPEED);
+  chassis.set_turn_pid(113, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(4.8, DRIVE_SPEED);
+  chassis.set_drive_pid(7.5, DRIVE_SPEED);
   fire_catapult();
   pros::delay(500);
   chassis.set_turn_pid(220, DRIVE_SPEED);
   chassis.wait_drive();
-  pros::delay(2500);
+  pros::delay(500);
   intake_toggle(true);
-  chassis.set_drive_pid(-35, DRIVE_SPEED);
+  chassis.set_drive_pid(-35, 80);
   chassis.wait_drive();
   pros::delay(500);
   intake_toggle(false);
@@ -130,6 +133,9 @@ void rightAwp(){ // gets roller then shoots 5 discs into the high goal
   chassis.wait_drive();
   pros::delay(750);
   chassis.set_drive_pid(-2, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(135, TURN_SPEED);
+  chassis.wait_drive();
   fire_catapult();
 }
 
