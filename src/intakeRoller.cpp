@@ -32,14 +32,14 @@ void move_intake_roller(){ // driver control
     intakeRoller.move_velocity(0);
 }
 
-void auton_roller(int time){
+void auton_roller(){
+  intakeRoller.move_relative(250, 600);
+}
+
+void skills_roller(int time){
   intake_toggle(true);
   pros::delay(time);
   intake_toggle(false);
-}
-
-void skills_roller(){
-    intakeRoller.move_relative(530, 600);
 }
 
 void auton_intake(){

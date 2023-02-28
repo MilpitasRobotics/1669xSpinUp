@@ -2,17 +2,13 @@
 #include "EZ-Template/util.hpp"
 #include "globals.hpp"
 #include "endgame.hpp"
-#include "intakeRoller.hpp"
 #include "catapult.hpp"
 #include "main.h"
 #include "pros/adi.hpp"
-#include "pros/llemu.h"
-#include "pros/llemu.hpp"
-#include "pros/misc.h"
 #include "pros/motors.h"
 #include "pros/rtos.hpp"
 #include "pros/screen.hpp"
-#include <cmath>
+#include "intakeRoller.hpp"
 
 
 //For Example Now Drive speed For everything is 75
