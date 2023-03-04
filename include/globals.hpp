@@ -7,3 +7,4 @@ extern pros::ADIDigitalOut piston1;
 extern pros::ADIDigitalOut piston2;
 
 extern bool stopCata;
+extern int rollerTime;

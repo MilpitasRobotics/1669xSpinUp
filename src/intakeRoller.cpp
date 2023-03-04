@@ -36,10 +36,15 @@ void auton_roller(){
   intakeRoller.move_relative(250, 600);
 }
 
-void skills_roller(int time){
-  intake_toggle(true);
-  pros::delay(time);
-  intake_toggle(false);
+void skills_roller(){
+  pros::delay(rollerTime);
+}
+
+void skills_roller_toggle(bool state){
+  if (state)
+    intakeRoller.move_velocity(600);
+  else
+    intakeRoller.move_velocity(0);
 }
 
 void auton_intake(){
