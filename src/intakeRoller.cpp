@@ -36,8 +36,11 @@ void auton_roller(){
   intakeRoller.move_relative(250, 600);
 }
 
-void skills_roller(){
-    intakeRoller.move_relative(530, 600);
+void skills_roller_toggle(bool toggle){
+  if (toggle)
+    intakeRoller.move_velocity(600);
+  else
+    intakeRoller.move_velocity(0);
 }
 
 void auton_intake(){
