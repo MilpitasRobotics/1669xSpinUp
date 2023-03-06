@@ -8,3 +8,4 @@ pros::ADIDigitalOut piston2 ('D');
 pros::Motor catapultMotor(1); 
 
 bool stopCata; 
+int rollerTime;

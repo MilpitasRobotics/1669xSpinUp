@@ -5,14 +5,6 @@
 #include "intakeRoller.hpp"
 #include "catapult.hpp"
 #include "main.h"
-#include "pros/adi.hpp"
-#include "pros/llemu.h"
-#include "pros/llemu.hpp"
-#include "pros/misc.h"
-#include "pros/motors.h"
-#include "pros/rtos.hpp"
-#include "pros/screen.hpp"
-#include <cmath>
 
 
 //For Example Now Drive speed For everything is 75
@@ -23,6 +15,7 @@ const int DRIVE_SPEED = 110; // This is 110/127 (around 87% of max speed).  We d
 const int TURN_SPEED  = 75;
 const int SWING_SPEED = 75;
 
+int rollerTime = 750;
 ///
 // Constants
 ///

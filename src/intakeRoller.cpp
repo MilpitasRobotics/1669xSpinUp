@@ -3,6 +3,7 @@
 #include "pros/misc.h"
 #include "pros/rtos.hpp"
 #include "intakeRoller.hpp"
+#include "globals.hpp"
 
 int direction = 1; // determines the direction of the intake (-1 is intake, 1 is outtake)
 bool intake_lock = false;
@@ -36,6 +37,9 @@ void auton_roller(){
   intakeRoller.move_relative(250, 600);
 }
 
+void skills_roller(){
+  pros::delay(rollerTime);
+}
 void skills_roller_toggle(bool toggle){
   if (toggle)
     intakeRoller.move_velocity(600);
