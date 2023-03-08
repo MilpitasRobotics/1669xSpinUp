@@ -367,10 +367,13 @@ void progSkills(){
   chassis.set_turn_pid(-180, TURN_SPEED);
   chassis.wait_drive();
   chassis.set_drive_pid(-29, 55);
+  chassis.wait_until(-20);
+  skills_roller_toggle(true);
   chassis.wait_drive();
   skills_roller();
   chassis.set_drive_pid(5, DRIVE_SPEED);
   chassis.wait_drive();
+  intake_toggle(true);
   chassis.set_turn_pid(-195, TURN_SPEED);
   chassis.wait_drive();
   chassis.set_drive_pid(75, DRIVE_SPEED);
