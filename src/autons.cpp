@@ -243,23 +243,25 @@ void progSkills(){
   chassis.set_drive_pid(-2.5, DRIVE_SPEED);
   chassis.wait_drive();
   skills_roller(); 
-  pros::delay(250);
+  pros::delay(350);
   chassis.set_drive_pid(17, 50);
   chassis.wait_drive();
+  pros::delay(250);
   chassis.set_turn_pid(90, TURN_SPEED);
   chassis.wait_drive();
   intake_toggle(true);
   chassis.set_drive_pid(-26, 50);
   chassis.wait_drive();
   skills_roller_toggle(true);
-  chassis.set_drive_pid(-5.5, DRIVE_SPEED);
+  chassis.set_drive_pid(-6, DRIVE_SPEED);
   chassis.wait_drive();
   skills_roller();
-  chassis.set_drive_pid(7.5, DRIVE_SPEED);
+  pros::delay(350);
+  chassis.set_drive_pid(9.5, DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(-2, TURN_SPEED);
+  chassis.set_turn_pid(-4, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(62.5, DRIVE_SPEED); // might need to tune this to make the next shot work
+  chassis.set_drive_pid(61, DRIVE_SPEED); // might need to tune this to make the next shot work
   intake_toggle(true);
   chassis.wait_drive();
   chassis.set_turn_pid(10, TURN_SPEED);
@@ -270,10 +272,10 @@ void progSkills(){
   chassis.set_turn_pid(-90, TURN_SPEED);
   chassis.wait_drive();
   pros::delay(750);
-  chassis.set_drive_pid(-32.5, 55);
+  chassis.set_drive_pid(-34.5, 55);
   chassis.wait_drive();
   pros::delay(250);
-  chassis.set_drive_pid(32.5, 100);
+  chassis.set_drive_pid(33.5, 100);
   chassis.wait_drive();
   intake_toggle(false);
   chassis.set_turn_pid(10, TURN_SPEED);
@@ -293,30 +295,30 @@ void progSkills(){
   pros::delay(500);
   chassis.set_turn_pid(-45, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(5, DRIVE_SPEED);
+  chassis.set_drive_pid(5.25, DRIVE_SPEED);
   chassis.wait_drive();
   fire_catapult();
   pros::delay(750);
-  chassis.set_drive_pid(-2.5, DRIVE_SPEED);
-  chassis.wait_drive();
+  // chassis.set_drive_pid(-0.25, DRIVE_SPEED);
+  // chassis.wait_drive();
   intake_toggle(true);
   chassis.set_turn_pid(-180, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(-46, 70);
+  chassis.set_drive_pid(-46.5, 70);
   chassis.wait_drive();
-  pros::delay(250);
-  intake_toggle(false);
+  pros::delay(750);
   chassis.set_turn_pid(-98, TURN_SPEED);
   chassis.wait_drive();
   fire_catapult();
+  intake_toggle(false);
   pros::delay(500);
-  chassis.set_turn_pid(-50, TURN_SPEED);
+  chassis.set_turn_pid(-53, TURN_SPEED);
   chassis.wait_drive();
   intake_toggle(true);
-  chassis.set_drive_pid(-60, 100);
+  chassis.set_drive_pid(-61, 70);
   chassis.wait_until(35);
   intake_toggle(false);
-  chassis.set_max_speed(50);
+  chassis.set_max_speed(40);
   chassis.wait_until(35.5);
   intake_toggle(true);
   chassis.wait_drive();
@@ -324,15 +326,16 @@ void progSkills(){
   intake_toggle(false);
   chassis.set_turn_pid(-70, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(34, 90);
+  pros::delay(250);
+  chassis.set_drive_pid(42, 90);
   chassis.wait_until(8);
   intakeRoller.move_velocity(600);
   chassis.wait_drive();
-  chassis.set_turn_pid(-75, TURN_SPEED); // change this for shot at high goal
+  chassis.set_turn_pid(-72, TURN_SPEED);
   chassis.wait_drive();
   fire_catapult();
-  pros::delay(100);
-  chassis.set_turn_pid(0, TURN_SPEED);
+  pros::delay(600);
+  chassis.set_turn_pid(-70, TURN_SPEED);
   chassis.wait_drive();
   chassis.set_drive_pid(-4, DRIVE_SPEED);
   chassis.wait_drive();
@@ -344,22 +347,26 @@ void progSkills(){
   chassis.set_max_speed(65);
   chassis.wait_drive();
   intake_toggle(false);
-  chassis.set_drive_pid(-6, 85);
+  chassis.set_drive_pid(-4.5, 85);
   chassis.wait_drive();
-  pros::delay(500);
+  pros::delay(700);
   skills_roller();
-  chassis.set_drive_pid(27, DRIVE_SPEED);
+  chassis.set_drive_pid(27.25, DRIVE_SPEED);
   chassis.wait_until(15);
   intake_toggle(true);
   chassis.wait_drive();
   chassis.set_turn_pid(-180, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(-29, 55);
+  chassis.set_drive_pid(-29.5, 55);
+  chassis.wait_until(-20);
+  skills_roller_toggle(true);
   chassis.wait_drive();
+  pros::delay(150);
   skills_roller();
   chassis.set_drive_pid(5, DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(-195, TURN_SPEED);
+  intake_toggle(true);
+  chassis.set_turn_pid(-196.5, TURN_SPEED);
   chassis.wait_drive();
   chassis.set_drive_pid(75, DRIVE_SPEED);
   chassis.wait_drive();
@@ -367,24 +374,26 @@ void progSkills(){
   chassis.wait_drive();
   fire_catapult();
   pros::delay(500);
-  chassis.set_drive_pid(1, DRIVE_SPEED);
+  chassis.set_drive_pid(1.5, DRIVE_SPEED);
   chassis.wait_drive();
   chassis.set_turn_pid(-270, TURN_SPEED);
   chassis.wait_drive();
   intake_toggle(true);
-  chassis.set_drive_pid(-30, 55); // here
+  pros::delay(250);
+  chassis.set_drive_pid(-32, 55);
   chassis.wait_drive();
-  chassis.set_drive_pid(30, 90);
+  chassis.set_drive_pid(32, 90);
   chassis.wait_drive();
   intake_toggle(false);
   chassis.set_turn_pid(-175, TURN_SPEED);
   chassis.wait_drive();
+  pros::delay(500);
   fire_catapult();
   pros::delay(500);
   intake_toggle(true);
   chassis.set_turn_pid(-215, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(-30, DRIVE_SPEED);
+  chassis.set_drive_pid(-35, 85); // here
   chassis.wait_drive();
   pros::delay(500);
   chassis.set_turn_pid(-315, TURN_SPEED);
@@ -394,21 +403,32 @@ void progSkills(){
   chassis.wait_drive();
   pros::delay(500);
   intake_toggle(false);
+  intakeRoller.move_velocity(600);
   chassis.set_turn_pid(-225, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(5, DRIVE_SPEED);
+  chassis.set_drive_pid(6, DRIVE_SPEED); // was 7.5 before but hit the barrier
   chassis.wait_drive();
   fire_catapult();
-  pros::delay(500);
-  chassis.set_drive_pid(-27, DRIVE_SPEED);
+  pros::delay(750);
+  intake_toggle(true);
+  chassis.set_turn_pid(-360, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-46.5, 55); // changed to match other side and avoid hitting barrier for shot
+  chassis.wait_drive();
+  pros::delay(750);
+  chassis.set_turn_pid(-278, TURN_SPEED);
+  chassis.wait_drive();
+  fire_catapult();
+  pros::delay(250);
+  chassis.set_turn_pid(-267, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-56.5, DRIVE_SPEED);
   chassis.wait_drive();
   chassis.set_turn_pid(-315, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(-71, DRIVE_SPEED);
-  chassis.wait_drive();
-  endgameToggle(true);
+  // endgameToggle(true);
+  // list of things i changed, move forward less for barrier shot, more time on last 2 rollers, drive back more on last line of 3 to avoid hitting the barrier, change angle and distance travelled for endgame
 }
-
 
 
 /* 
