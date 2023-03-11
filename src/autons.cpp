@@ -19,7 +19,7 @@ const int DRIVE_SPEED = 110; // This is 110/127 (around 87% of max speed).  We d
 const int TURN_SPEED  = 75;
 const int SWING_SPEED = 75;
 
-int rollerTime = 650;
+int rollerTime = 450;
 
 ///
 // Constants
@@ -320,10 +320,10 @@ void progSkills(){
   chassis.set_turn_pid(-53, TURN_SPEED);
   chassis.wait_drive();
   intake_toggle(true);
-  chassis.set_drive_pid(-58, 70);
+  chassis.set_drive_pid(-58, 60);
   chassis.wait_until(35);
   intake_toggle(false);
-  chassis.set_max_speed(40);
+  chassis.set_max_speed(35);
   chassis.wait_until(35.5);
   intake_toggle(true);
   chassis.wait_drive();

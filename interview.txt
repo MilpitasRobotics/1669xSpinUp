@@ -1,0 +1,11 @@
+From the programming standpoint, we wanted to make the controls as simple and intuitive as possible without losing any functionality. Keeping this in mind and taking input from the driver on his preferences, we decided to stick with a single trigger for shooting (loads automatically), 2 triggers for intake and outtake respectively, and one trigger for rollers.
+
+explain cata code (ls, get_new_press to shoot, task in background running to lower cata)
+
+explain intake (intake toggle, outtake only when intake running and hold)
+
+explain roller (hold to press, similar to outtake on intake but can run even when intake is not running)
+
+For endgame, we decided to map the release to the left arrow and A button pressed at the same time since we did not want the driver to accidentally launch endgame in the middle of the match resulting in a disqualification.
+
+For the autonomous period, we used a custom tuned PID loop for all movements to ensure accuracy and incorporated an inertial sensor for precise turn movements. We used multitasking to ensure that time wasn't wasted waiting for the robot to finish loading and tuned exit conditions for PID to ensure that we did not go over time.
