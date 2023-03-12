@@ -88,9 +88,9 @@ void initialize() {
   // chassis.set_right_curve_buttons(pros::E_CONTROLLER_DIGITAL_Y,    pros::E_CONTROLLER_DIGITAL_A);
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("Solo AWP (start at roller)", soloAwp),
-    Auton("Do nothing (start away from roller)", doNothing),
     Auton("Right AWP (start away from roller)", rightAwp),
+    Auton("Do nothing (start away from roller)", doNothing),
+    Auton("Solo AWP (start at roller)", soloAwp),
     Auton("Left AWP (start at roller)", leftAwp), 
   });
 

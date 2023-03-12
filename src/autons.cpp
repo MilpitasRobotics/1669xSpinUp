@@ -1,4 +1,5 @@
 #include "autons.hpp"
+#include "EZ-Template/sdcard.hpp"
 #include "EZ-Template/util.hpp"
 #include "globals.hpp"
 #include "endgame.hpp"
@@ -75,68 +76,47 @@ void leftAwp() { // starts off with the roller then shoots 5 discs into the goal
   chassis.set_drive_pid(-6, DRIVE_SPEED);
   chassis.wait_drive();
   auton_roller();
+  }
+
+void rightAwp(){
+  intake_toggle(true);
+  chassis.set_drive_pid(-41, 90);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-135, 60);
+  chassis.wait_drive();
   chassis.set_drive_pid(8, DRIVE_SPEED);
   chassis.wait_drive();
   fire_catapult();
-  pros::delay(100);
+  pros::delay(1750);
+  chassis.set_drive_pid(-14.5, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-180, 60);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-36, 60);
+  chassis.wait_drive();
+  pros::delay(500);
+  chassis.set_drive_pid(40, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-135, 60);
+  chassis.wait_drive();
+  chassis.set_drive_pid(4, DRIVE_SPEED);
+  chassis.wait_drive();
+  fire_catapult();
   chassis.set_drive_pid(-4, DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(-135, TURN_SPEED);
+  chassis.set_turn_pid(-225, 90);
   chassis.wait_drive();
-  intake_toggle(true);
-  chassis.set_drive_pid(35, 80);
+  chassis.set_drive_pid(-68, 60);
   chassis.wait_drive();
-  pros::delay(750);
-  intake_toggle(false);
-  chassis.set_turn_pid(-45, TURN_SPEED);
+  chassis.set_turn_pid(-180, 60);
   chassis.wait_drive();
-  chassis.set_drive_pid(4, DRIVE_SPEED);
+  intakeRoller.move_velocity(600);
+  chassis.set_drive_pid(-4, DRIVE_SPEED);
   chassis.wait_drive();
-  fire_catapult();
-}
-
-void rightAwp(){ // gets roller then shoots 5 discs into the high goal
-  chassis.set_drive_pid(-8, DRIVE_SPEED);
-  chassis.wait_drive();
-  chassis.set_swing_pid(ez::RIGHT_SWING, 95, SWING_SPEED);
-  chassis.wait_drive();
-  chassis.set_drive_pid(-1.5, DRIVE_SPEED);
-  chassis.wait_drive();
-  pros::delay(250);
-  auton_roller();
-  chassis.set_drive_pid(4, DRIVE_SPEED);
-  chassis.wait_drive();
-  chassis.set_turn_pid(225, TURN_SPEED);
-  chassis.wait_drive();
+  pros::delay(300);
   chassis.set_drive_pid(2, DRIVE_SPEED);
-  intake_toggle(true);
-  chassis.set_drive_pid(-30, DRIVE_SPEED);
   chassis.wait_drive();
-  pros::delay(750);
-  intake_toggle(false);
-  chassis.set_turn_pid(113, TURN_SPEED);
-  chassis.wait_drive();
-  chassis.set_drive_pid(7.5, DRIVE_SPEED);
-  fire_catapult();
-  pros::delay(500);
-  chassis.set_turn_pid(220, DRIVE_SPEED);
-  chassis.wait_drive();
-  pros::delay(500);
-  intake_toggle(true);
-  chassis.set_drive_pid(-35, 80);
-  chassis.wait_drive();
-  pros::delay(500);
-  intake_toggle(false);
-  chassis.set_turn_pid(140, TURN_SPEED);
-  chassis.wait_drive();
-  chassis.set_drive_pid(-6, DRIVE_SPEED);
-  chassis.wait_drive();
-  pros::delay(750);
-  chassis.set_drive_pid(-2, DRIVE_SPEED);
-  chassis.wait_drive();
-  chassis.set_turn_pid(135, TURN_SPEED);
-  chassis.wait_drive();
-  fire_catapult();
+  intakeRoller.move_velocity(0);
 }
 
 void soloAwp() { // same as left AWP but added turn, move forward, turn again, get roller
