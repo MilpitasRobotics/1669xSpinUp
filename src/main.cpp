@@ -21,7 +21,7 @@ pros::ADIDigitalIn toggleAuton('D');
 Drive chassis (
   // Left Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  {-10, -5, -6} // port 1 was malfunctioning need to figure out what is going on
+  {-10, -4, -5} // port 1 was malfunctioning need to figure out what is going on
 
   // Right Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
@@ -89,9 +89,9 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
     Auton("Right AWP (start away from roller)", rightAwp),
+    Auton("Left AWP (start at roller)", leftAwp), 
     Auton("Do nothing (start away from roller)", doNothing),
     Auton("Solo AWP (start at roller)", soloAwp),
-    Auton("Left AWP (start at roller)", leftAwp), 
   });
 
   // Initialize chassis and auton selector

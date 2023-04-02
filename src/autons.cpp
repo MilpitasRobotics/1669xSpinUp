@@ -3,6 +3,7 @@
 #include "EZ-Template/util.hpp"
 #include "globals.hpp"
 #include "endgame.hpp"
+#include "intakeRoller.hpp"
 #include "main.h"
 #include "pros/adi.hpp"
 #include "pros/llemu.h"
@@ -73,9 +74,47 @@ void modified_exit_condition() {
 
 
 void leftAwp() { // starts off with the roller then shoots 5 discs into the goal
-  chassis.set_drive_pid(-6, DRIVE_SPEED);
+  chassis.set_drive_pid(-5.5, DRIVE_SPEED);
   chassis.wait_drive();
-  auton_roller();
+  auton_intake(true);
+  pros::delay(500);
+  chassis.set_drive_pid(5.5, DRIVE_SPEED);
+  chassis.wait_drive();
+  auton_intake(false);
+  fire_catapult();
+  chassis.set_turn_pid(-135, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-24, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-225, TURN_SPEED);
+  chassis.wait_drive();
+  piston_intake(true);
+  intake_toggle(true);
+  chassis.set_drive_pid(-8, 50);
+  chassis.wait_drive();
+  piston_intake(false);
+  pros::delay(1500);
+  chassis.set_turn_pid(-35, TURN_SPEED);
+  chassis.wait_drive();
+  intake_toggle(false);
+  fire_catapult();
+  chassis.set_turn_pid(-90, TURN_SPEED);
+  chassis.wait_drive();
+  piston_intake(true);
+  intake_toggle(true);
+  chassis.set_drive_pid(-36, DRIVE_SPEED);
+  chassis.wait_until(-24);
+  chassis.set_max_speed(60);
+  chassis.wait_drive();
+  piston_intake(false);
+  pros::delay(1500);
+  chassis.set_turn_pid(-35, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(4, DRIVE_SPEED);
+  chassis.wait_drive();
+  fire_catapult();
+  intake_toggle(false);
+
   }
 
 void rightAwp(){
@@ -92,37 +131,70 @@ void rightAwp(){
   chassis.wait_drive();
   chassis.set_turn_pid(-180, 60);
   chassis.wait_drive();
-  chassis.set_drive_pid(-36, 60);
+  chassis.set_drive_pid(-38, 60);
   chassis.wait_drive();
   pros::delay(500);
   chassis.set_drive_pid(40, DRIVE_SPEED);
   chassis.wait_drive();
   chassis.set_turn_pid(-135, 60);
   chassis.wait_drive();
-  chassis.set_drive_pid(4, DRIVE_SPEED);
+  chassis.set_drive_pid(6, DRIVE_SPEED);
   chassis.wait_drive();
   fire_catapult();
-  chassis.set_drive_pid(-4, DRIVE_SPEED);
+  chassis.set_drive_pid(-1, DRIVE_SPEED);
   chassis.wait_drive();
   chassis.set_turn_pid(-225, 90);
   chassis.wait_drive();
-  chassis.set_drive_pid(-68, 60);
+  intake_toggle(true);
+  pros::delay(750);
+  chassis.set_drive_pid(-67, DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(-180, 60);
+  chassis.set_turn_pid(-180, TURN_SPEED);
   chassis.wait_drive();
-  intakeRoller.move_velocity(600);
-  chassis.set_drive_pid(-4, DRIVE_SPEED);
+  auton_intake(true);
+  chassis.set_drive_pid(-5, DRIVE_SPEED);
   chassis.wait_drive();
-  pros::delay(300);
+  pros::delay(150);
   chassis.set_drive_pid(2, DRIVE_SPEED);
   chassis.wait_drive();
-  intakeRoller.move_velocity(0);
+  auton_intake(false);
+  // chassis.wait_drive();
+  // chassis.set_turn_pid(-315, TURN_SPEED);
+  // chassis.wait_drive();
+  // chassis.set_drive_pid(-8, DRIVE_SPEED);
+  // chassis.wait_drive();
+  // pros::delay(350);
+  // chassis.set_turn_pid(-160, TURN_SPEED);
+  // chassis.wait_drive();
+  // fire_catapult();
+  // chassis.set_turn_pid(-162, TURN_SPEED);
+  // chassis.wait_drive();
+  // chassis.set_drive_pid(-32, DRIVE_SPEED);
+  // chassis.wait_until(-20);
+  // auton_intake(true);
+  // chassis.wait_drive();
+  // pros::delay(500);
+  // auton_intake(false);
+
+
+
+  // chassis.set_drive_pid(-68, 60);
+  // chassis.wait_drive();
+  // chassis.set_turn_pid(-180, 60);
+  // chassis.wait_drive();
+  // intakeRoller.move_velocity(600);
+  // chassis.set_drive_pid(-4, DRIVE_SPEED);
+  // chassis.wait_drive();
+  // pros::delay(300);
+  // chassis.set_drive_pid(2, DRIVE_SPEED);
+  // chassis.wait_drive();
+  // intakeRoller.move_velocity(0);
 }
 
 void soloAwp() { // same as left AWP but added turn, move forward, turn again, get roller
   chassis.set_drive_pid(-3, DRIVE_SPEED);
   chassis.wait_drive();
-  auton_roller();
+  // auton_roller(true);
   pros::delay(500);
   chassis.set_swing_pid(ez::RIGHT_SWING, -11, SWING_SPEED);
   chassis.wait_drive();
@@ -209,7 +281,7 @@ void justRoller(){
   chassis.wait_drive();
   chassis.set_swing_pid(ez::RIGHT_SWING, 95, SWING_SPEED);
   chassis.wait_drive();
-  auton_roller();
+  // auton_roller(true);
   chassis.set_drive_pid(3, DRIVE_SPEED);
   chassis.wait_drive();
   chassis.set_turn_pid(225, TURN_SPEED);
@@ -371,135 +443,12 @@ void progSkills(){
   chassis.wait_drive();
   fire_catapult();
   pros::delay(500);
-  // chassis.set_drive_pid(-30, DRIVE_SPEED);
-  // chassis.wait_drive();
-  // chassis.set_turn_pid(45, TURN_SPEED);
-  // chassis.wait_drive();
-  // chassis.set_drive_pid(-60,DRIVE_SPEED);
-  chassis.wait_drive();
-  //endgameToggle(true);
-
-
-
-  
-   // remember to switch all signs (assumes that task for loading cata works)
-  /*chassis.set_drive_pid(2, DRIVE_SPEED);
-  chassis.wait_drive();
-  auton_roller();
-  auton_roller();
-  
-  chassis.set_drive_pid(-20, DRIVE_SPEED);
-  chassis.wait_drive();
-  chassis.set_turn_pid(-90, TURN_SPEED);
-  chassis.wait_drive();
-  intake_toggle(true);
-  chassis.set_drive_pid(36, DRIVE_SPEED);
-  chassis.wait_until(28);
-  intake_toggle(false);
-  chassis.wait_drive();
-  auton_roller();
-  chassis.set_drive_pid(-16, DRIVE_SPEED);
-  chassis.wait_drive();
-  chassis.set_turn_pid(0, TURN_SPEED);
-  chassis.wait_drive();
-  chassis.set_drive_pid(-64, 127);
-  chassis.wait_until(-40);
-  chassis.set_max_speed(DRIVE_SPEED);
-  chassis.wait_drive();
-  fire_catapult();
-  pros::delay(100);
-  chassis.set_turn_pid(90, TURN_SPEED);
-  chassis.wait_drive();
-  pros::delay(100);
-  intake_toggle(true);
-  chassis.set_drive_pid(36, DRIVE_SPEED);
-  chassis.wait_drive();
-  intake_toggle(false);
-  chassis.set_drive_pid(-36, DRIVE_SPEED);
-  chassis.wait_drive();
-  chassis.set_turn_pid(0, TURN_SPEED);
-  chassis.wait_drive();
-  fire_catapult();
-  pros::delay(100);
-  chassis.set_turn_pid(90, TURN_SPEED);
-  chassis.wait_drive();
-  pros::delay(100);
-  intake_toggle(true);
-  pros::delay(100);
-  chassis.set_drive_pid(36, DRIVE_SPEED);
-  chassis.wait_drive();
-  chassis.set_turn_pid(180, TURN_SPEED);
-  chassis.wait_drive();
-  chassis.set_drive_pid(36, DRIVE_SPEED);
-  chassis.wait_drive();
-  intake_toggle(false);
-  chassis.set_turn_pid(90, TURN_SPEED);
-  chassis.wait_drive();
-  fire_catapult();
-  pros::delay(100);
-  chassis.set_drive_pid(64, 127);
-  chassis.wait_until(40);
-  chassis.set_max_speed(DRIVE_SPEED);
-  chassis.wait_drive();
-  pros::delay(100);
-  chassis.set_turn_pid(180, TURN_SPEED);
-  chassis.wait_drive();
-  pros::delay(100);
-  chassis.set_drive_pid(24, DRIVE_SPEED);
-  chassis.wait_drive();
-  auton_roller();
-  pros::delay(100);
-  chassis.set_drive_pid(-24, DRIVE_SPEED);
-  chassis.wait_drive();
-  pros::delay(100);
-  intake_toggle(true);
-  chassis.set_turn_pid(90, TURN_SPEED);
-  chassis.wait_drive();
-  pros::delay(100);
-  chassis.set_drive_pid(-24, DRIVE_SPEED);
-  chassis.wait_until(20);
-  intake_toggle(false);
-  chassis.wait_drive();
-  auton_roller();
-  chassis.set_drive_pid(-36, DRIVE_SPEED); 
-  chassis.wait_drive();
-  chassis.set_turn_pid(0, TURN_SPEED);
-  chassis.wait_drive();
-  intake_toggle(true);
-  chassis.set_drive_pid(48, DRIVE_SPEED);
-  chassis.wait_drive();
-  chassis.set_turn_pid(-135, TURN_SPEED);
-  chassis.wait_drive();
-  chassis.set_drive_pid(-24, DRIVE_SPEED);
-  chassis.wait_drive();
-  intake_toggle(false);
-  chassis.set_turn_pid(-180, TURN_SPEED);
-  chassis.wait_drive();
-  fire_catapult();
-  chassis.set_turn_pid(-90, TURN_SPEED);
-  chassis.wait_drive();
-  intake_toggle(true);
-  chassis.set_drive_pid(48, DRIVE_SPEED);
-  chassis.wait_drive();
-  intake_toggle(false);
-  chassis.set_turn_pid(-180, TURN_SPEED);
-  chassis.wait_drive();
-  chassis.set_drive_pid(-36, DRIVE_SPEED);
-  chassis.wait_drive();
-  chassis.set_turn_pid(-90, TURN_SPEED);
-  chassis.wait_drive();
-  fire_catapult();
-  chassis.set_drive_pid(72, 127);
-  chassis.wait_until(60);
-  chassis.set_max_speed(DRIVE_SPEED);
-  chassis.wait_drive();
-  chassis.set_turn_pid(-45, TURN_SPEED);
-  chassis.wait_drive();
-  // fire endgame
-  endgameToggle(true); */
 }
 
 void doNothing(){
+  piston_intake(true);
+  pros::delay(2000);
+  piston_intake(false);
 }
 
 /* 

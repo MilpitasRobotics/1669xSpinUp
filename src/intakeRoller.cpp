@@ -46,10 +46,11 @@ void skills_roller(){
     intakeRoller.move_relative(530, 600);
 }
 
-void auton_intake(){
- intake_toggle(true);
- pros::delay(500);
- intake_toggle(false);
+void auton_intake(bool state){
+  if (state)
+    intakeRoller.move_velocity(600);
+  else
+    intakeRoller.move_velocity(0);
 }
 
 void intake_toggle(bool state){
@@ -59,3 +60,6 @@ void intake_toggle(bool state){
     intakeRoller.move_velocity(0);
 }
 
+void piston_intake(bool state){
+    pistonintake.set_value(state);
+}
