@@ -125,7 +125,7 @@ void rightAwp(){
   chassis.wait_drive();
   // chassis.set_drive_pid(-0.5, DRIVE_SPEED);
   // chassis.wait_drive();
-  pros::delay(200);
+  pros::delay(100);
   chassis.set_drive_pid(2, DRIVE_SPEED);
   chassis.wait_drive();
   chassis.set_turn_pid(100, DRIVE_SPEED);
@@ -140,12 +140,12 @@ void rightAwp(){
   chassis.wait_drive();
   pros::delay(500);
   intake_toggle(true);
-  chassis.set_drive_pid(-75, DRIVE_SPEED);
+  chassis.set_drive_pid(-75, 90);
   chassis.wait_until(63);
   chassis.set_max_speed(80);
   chassis.wait_drive();
-  pros::delay(250);
-  chassis.set_swing_pid(ez::RIGHT_SWING, 135, 90);
+  pros::delay(500);
+  chassis.set_swing_pid(ez::RIGHT_SWING, 138, 80);
   chassis.wait_drive();
   chassis.set_drive_pid(-3, DRIVE_SPEED);
   chassis.wait_drive();
@@ -155,13 +155,13 @@ void rightAwp(){
   chassis.wait_drive();
   chassis.set_turn_pid(90, 90);
   chassis.wait_drive();
-  chassis.set_drive_pid(-37, 80);
+  chassis.set_drive_pid(-37, 60);
   chassis.wait_drive();
   chassis.set_drive_pid(37, DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(140, TURN_SPEED);
+  chassis.set_turn_pid(138, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(7, DRIVE_SPEED);
+  chassis.set_drive_pid(3, DRIVE_SPEED);
   chassis.wait_drive();
   fire_catapult();
 }
