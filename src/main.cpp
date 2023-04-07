@@ -90,8 +90,8 @@ void initialize() {
   ez::as::auton_selector.add_autons({
     Auton("Right AWP (start away from roller)", rightAwp),
     Auton("Left AWP (start at roller)", leftAwp), 
-    Auton("Do nothing (start away from roller)", doNothing),
     Auton("Solo AWP (start at roller)", soloAwp),
+    Auton("Do nothing (start away from roller)", doNothing),
   });
 
   // Initialize chassis and auton selector

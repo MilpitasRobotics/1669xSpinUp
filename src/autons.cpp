@@ -37,7 +37,7 @@ void default_constants() {
   chassis.set_pid_constants(&chassis.forward_drivePID, 0.68, 0, 5.25, 0);
   chassis.set_pid_constants(&chassis.backward_drivePID, 0.65, 0, 5.25, 0);
   chassis.set_pid_constants(&chassis.turnPID, 5.35, 0.003, 35, 15);
-  chassis.set_pid_constants(&chassis.swingPID, 7, 0, 45, 0);
+  chassis.set_pid_constants(&chassis.swingPID, 13.5, 0, 125, 0);
 }
 
 void one_mogo_constants() {
@@ -118,77 +118,52 @@ void leftAwp() { // starts off with the roller then shoots 5 discs into the goal
   }
 
 void rightAwp(){
-  intake_toggle(true);
-  chassis.set_drive_pid(-41, 90);
-  chassis.wait_drive();
-  chassis.set_turn_pid(-135, 60);
-  chassis.wait_drive();
-  chassis.set_drive_pid(8, DRIVE_SPEED);
-  chassis.wait_drive();
-  fire_catapult();
-  pros::delay(1750);
-  chassis.set_drive_pid(-14.5, DRIVE_SPEED);
-  chassis.wait_drive();
-  chassis.set_turn_pid(-180, 60);
-  chassis.wait_drive();
-  chassis.set_drive_pid(-38, 60);
-  chassis.wait_drive();
-  pros::delay(500);
-  chassis.set_drive_pid(40, DRIVE_SPEED);
-  chassis.wait_drive();
-  chassis.set_turn_pid(-135, 60);
-  chassis.wait_drive();
-  chassis.set_drive_pid(6, DRIVE_SPEED);
-  chassis.wait_drive();
-  fire_catapult();
-  chassis.set_drive_pid(-1, DRIVE_SPEED);
-  chassis.wait_drive();
-  chassis.set_turn_pid(-225, 90);
-  chassis.wait_drive();
-  intake_toggle(true);
-  pros::delay(750);
-  chassis.set_drive_pid(-67, DRIVE_SPEED);
-  chassis.wait_drive();
-  chassis.set_turn_pid(-180, TURN_SPEED);
-  chassis.wait_drive();
   auton_intake(true);
-  chassis.set_drive_pid(-5, DRIVE_SPEED);
+  chassis.set_drive_pid(-10, DRIVE_SPEED);
   chassis.wait_drive();
-  pros::delay(150);
+  chassis.set_swing_pid(ez::RIGHT_SWING, 90, 90);
+  chassis.wait_drive();
+  // chassis.set_drive_pid(-0.5, DRIVE_SPEED);
+  // chassis.wait_drive();
+  pros::delay(200);
   chassis.set_drive_pid(2, DRIVE_SPEED);
   chassis.wait_drive();
-  auton_intake(false);
-  // chassis.wait_drive();
-  // chassis.set_turn_pid(-315, TURN_SPEED);
-  // chassis.wait_drive();
-  // chassis.set_drive_pid(-8, DRIVE_SPEED);
-  // chassis.wait_drive();
-  // pros::delay(350);
-  // chassis.set_turn_pid(-160, TURN_SPEED);
-  // chassis.wait_drive();
-  // fire_catapult();
-  // chassis.set_turn_pid(-162, TURN_SPEED);
-  // chassis.wait_drive();
-  // chassis.set_drive_pid(-32, DRIVE_SPEED);
-  // chassis.wait_until(-20);
-  // auton_intake(true);
-  // chassis.wait_drive();
-  // pros::delay(500);
-  // auton_intake(false);
-
-
-
-  // chassis.set_drive_pid(-68, 60);
-  // chassis.wait_drive();
-  // chassis.set_turn_pid(-180, 60);
-  // chassis.wait_drive();
-  // intakeRoller.move_velocity(600);
-  // chassis.set_drive_pid(-4, DRIVE_SPEED);
-  // chassis.wait_drive();
-  // pros::delay(300);
-  // chassis.set_drive_pid(2, DRIVE_SPEED);
-  // chassis.wait_drive();
-  // intakeRoller.move_velocity(0);
+  chassis.set_turn_pid(100, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(6, DRIVE_SPEED);
+  chassis.wait_until(4);
+  fire_catapult();
+  chassis.wait_drive();
+  chassis.set_drive_pid(-3, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(225, TURN_SPEED);
+  chassis.wait_drive();
+  pros::delay(500);
+  intake_toggle(true);
+  chassis.set_drive_pid(-75, DRIVE_SPEED);
+  chassis.wait_until(63);
+  chassis.set_max_speed(80);
+  chassis.wait_drive();
+  pros::delay(250);
+  chassis.set_swing_pid(ez::RIGHT_SWING, 135, 90);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-3, DRIVE_SPEED);
+  chassis.wait_drive();
+  fire_catapult();
+  pros::delay(750);
+  chassis.set_drive_pid(-3.5, 80);
+  chassis.wait_drive();
+  chassis.set_turn_pid(90, 90);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-37, 80);
+  chassis.wait_drive();
+  chassis.set_drive_pid(37, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(140, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(7, DRIVE_SPEED);
+  chassis.wait_drive();
+  fire_catapult();
 }
 
 void soloAwp() { // same as left AWP but added turn, move forward, turn again, get roller
@@ -446,9 +421,10 @@ void progSkills(){
 }
 
 void doNothing(){
-  piston_intake(true);
-  pros::delay(2000);
-  piston_intake(false);
+  chassis.set_swing_pid(ez::LEFT_SWING, -90, SWING_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(24, DRIVE_SPEED);
+  chassis.wait_drive();
 }
 
 /* 
