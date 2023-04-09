@@ -1,4 +1,5 @@
 #include "main.h"
+#include "EZ-Template/sdcard.hpp"
 #include "pros/adi.hpp"
 #include "pros/llemu.hpp"
 #include "pros/misc.h"
@@ -88,7 +89,8 @@ void initialize() {
   // chassis.set_right_curve_buttons(pros::E_CONTROLLER_DIGITAL_Y,    pros::E_CONTROLLER_DIGITAL_A);
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("Right AWP (start away from roller)", rightAwp),
+    Auton("Right AWP1 (start away from roller) original (move forward, intake, shoot)", rightAwp1),
+    Auton("Right AWP (start away from roller), new (swing turn, roller)", rightAwp),
     Auton("Left AWP (start at roller)", leftAwp), 
     Auton("Solo AWP (start at roller)", soloAwp),
     Auton("Do nothing (start away from roller)", doNothing),
@@ -109,7 +111,12 @@ void initialize() {
  */
 void disabled() {
   // . . .
-    }
+  while(true){
+  if(master.get_digital_new_press(DIGITAL_RIGHT)) ez::as::page_up();
+  else if (master.get_digital_new_press(DIGITAL_LEFT)) ez::as::page_down();
+  pros::delay(20);
+  }
+}
 
 
 

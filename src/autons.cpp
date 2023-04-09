@@ -151,7 +151,7 @@ void rightAwp(){
   chassis.wait_drive();
   fire_catapult();
   pros::delay(750);
-  chassis.set_drive_pid(-3.5, 80);
+  chassis.set_drive_pid(-3, 80);
   chassis.wait_drive();
   chassis.set_turn_pid(90, 90);
   chassis.wait_drive();
@@ -164,6 +164,53 @@ void rightAwp(){
   chassis.set_drive_pid(3, DRIVE_SPEED);
   chassis.wait_drive();
   fire_catapult();
+}
+
+void rightAwp1(){
+  intake_toggle(true);
+  pros::delay(750);
+  chassis.set_drive_pid(-41, 90);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-142, 60);
+  chassis.wait_drive();
+  chassis.set_drive_pid(8, DRIVE_SPEED);
+  chassis.wait_drive();
+  fire_catapult();
+  pros::delay(1750);
+  chassis.set_turn_pid(-150, 60);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-17, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-165, 60);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-36, 60);
+  chassis.wait_drive();
+  pros::delay(500);
+  chassis.set_drive_pid(42, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-145, 60);
+  chassis.wait_drive();
+  chassis.set_drive_pid(11, DRIVE_SPEED);
+  chassis.wait_drive();
+  fire_catapult();
+  chassis.set_drive_pid(-4, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-225, 90);
+  chassis.wait_drive();
+  intake_toggle(true);
+  pros::delay(1000);
+  chassis.set_drive_pid(-58, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-180, TURN_SPEED);
+  chassis.wait_drive();
+  intake_toggle(false);
+  auton_intake(true);
+  chassis.set_drive_pid(-6, DRIVE_SPEED);
+  chassis.wait_drive();
+  pros::delay(100);
+  chassis.set_drive_pid(2, DRIVE_SPEED);
+  chassis.wait_drive();
+  auton_intake(false);
 }
 
 void soloAwp() { // same as left AWP but added turn, move forward, turn again, get roller

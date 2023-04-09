@@ -7,6 +7,7 @@ extern Drive chassis;
 void leftAwp();
 void soloAwp();
 void rightAwp();
+void rightAwp1();
 void justRoller();
 void testFunc();
 void progSkills();
