@@ -1,5 +1,6 @@
 #include "main.h"
 #include "EZ-Template/sdcard.hpp"
+#include "EZ-Template/util.hpp"
 #include "pros/adi.hpp"
 #include "pros/llemu.hpp"
 #include "pros/misc.h"
@@ -160,7 +161,6 @@ void autonomous() {
   }
   }};
   ez::as::auton_selector.call_selected_auton(); // Calls selected auton from autonomous selector.
-  // load.remove();
 }
 
 
@@ -182,6 +182,8 @@ void opcontrol() {
   // This is preference to what you like to drive on.
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);  
   autonBoost.set_value(true);
+  bool boost = true;
+  bool piston = false;
   while (true) {
     move_catapult(600);    
     // chassis.tank(); // Tank control
@@ -195,6 +197,14 @@ void opcontrol() {
     // . . .
     activateEndgame();
     move_intake_roller();
+    if(master.get_digital_new_press(DIGITAL_Y)) boost = !boost;
+
+    if(master.get_digital_new_press(DIGITAL_UP)) piston = !piston;
+
+    autonBoost.set_value(boost);
+
+    piston_intake(piston);
+
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }
