@@ -79,7 +79,7 @@ void initialize() {
   // Configure your chassis controls
   chassis.toggle_modify_curve_with_controller(true); // Enables modifying the controller curve with buttons on the joysticks
   chassis.set_active_brake(0); // Sets the active brake kP. We recommend 0.1.
-  chassis.set_curve_default(2.5, 2.5); // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)  need to change this for smooth controlling
+  chassis.set_curve_default(0, 0); // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)  need to change this for smooth controlling
   default_constants(); // Set the drive to your own constants from autons.cpp!
   exit_condition_defaults(); // Set the exit conditions to your own constants from autons.cpp!
   endgameToggle(false);
@@ -91,8 +91,9 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
     Auton("Right AWP1 (start away from roller) original (move forward, intake, shoot)", rightAwp1),
-    Auton("Right AWP (start away from roller), new (swing turn, roller)", rightAwp),
     Auton("Left AWP (start at roller)", leftAwp), 
+    Auton("Right AWP2", rightAwp2),
+    Auton("Right AWP (start away from roller), new (swing turn, roller)", rightAwp),
     Auton("Solo AWP (start at roller)", soloAwp),
     Auton("Do nothing (start away from roller)", doNothing),
   });

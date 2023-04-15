@@ -8,6 +8,7 @@ void leftAwp();
 void soloAwp();
 void rightAwp();
 void rightAwp1();
+void rightAwp2();
 void justRoller();
 void testFunc();
 void progSkills();
