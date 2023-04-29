@@ -10,6 +10,7 @@
 #include "pros/llemu.hpp"
 #include "pros/misc.h"
 #include "pros/motors.h"
+#include "pros/rtos.h"
 #include "pros/rtos.hpp"
 #include "pros/screen.hpp"
 #include <cmath>
@@ -77,11 +78,11 @@ void leftAwp() { // starts off with the roller then shoots 5 discs into the goal
   chassis.set_drive_pid(-5.5, DRIVE_SPEED);
   chassis.wait_drive();
   auton_intake(true);
-  pros::delay(200);
+  pros::delay(250);
   chassis.set_drive_pid(8.5, DRIVE_SPEED);
   chassis.wait_drive();
   auton_intake(false);
-  chassis.set_turn_pid(-10, TURN_SPEED);
+  chassis.set_turn_pid(-12, TURN_SPEED);
   chassis.wait_drive();
   fire_catapult();
   chassis.set_drive_pid(-1, DRIVE_SPEED);
@@ -92,22 +93,23 @@ void leftAwp() { // starts off with the roller then shoots 5 discs into the goal
   chassis.wait_drive();
   piston_intake(true);
   intake_toggle(true);
-  chassis.set_drive_pid(-26.5, DRIVE_SPEED);
+  chassis.set_drive_pid(-22.5, DRIVE_SPEED);
   chassis.wait_drive();
+  pros::delay(250);
   piston_intake(false);
-  pros::delay(2000);
-  chassis.set_turn_pid(-21, TURN_SPEED);
+  pros::delay(1900);
+  chassis.set_turn_pid(-19, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(4.5, DRIVE_SPEED);
+  chassis.set_drive_pid(6.5, DRIVE_SPEED);
   chassis.wait_drive();
   fire_catapult();
   pros::delay(250);
-  chassis.set_drive_pid(-9.5, DRIVE_SPEED);
+  chassis.set_drive_pid(-11.5, DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(110, TURN_SPEED);
+  chassis.set_turn_pid(120, TURN_SPEED);
   chassis.wait_drive();
-  piston_intake(true);
-  chassis.set_drive_pid(-14, 80);
+  piston_intake(true); // 2nd shot is to the right`
+  chassis.set_drive_pid(-11, 80);
   chassis.wait_drive();
   piston_intake(false);
   pros::delay(2000);
@@ -115,9 +117,9 @@ void leftAwp() { // starts off with the roller then shoots 5 discs into the goal
   chassis.wait_drive();
   chassis.set_drive_pid(12.5, DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(-21, TURN_SPEED);
+  chassis.set_turn_pid(-23, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(8, DRIVE_SPEED);
+  chassis.set_drive_pid(7.5, DRIVE_SPEED);
   chassis.wait_drive();
   fire_catapult();
   intake_toggle(false);
@@ -205,14 +207,14 @@ void rightAwp(){
 
 void rightAwp1(){
   intake_toggle(true);
-  chassis.set_drive_pid(-41, 90);
+  chassis.set_drive_pid(-41, DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(-135, 60);
+  chassis.set_turn_pid(-137, 60);
   chassis.wait_drive();
   chassis.set_drive_pid(10, DRIVE_SPEED);
   chassis.wait_drive();
   fire_catapult();
-  pros::delay(750);
+  pros::delay(900);
   chassis.set_turn_pid(-148, 60);
   chassis.wait_drive();
   chassis.set_drive_pid(-17, DRIVE_SPEED);
@@ -224,7 +226,7 @@ void rightAwp1(){
   pros::delay(500);
   chassis.set_drive_pid(40, DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(-135, 60);
+  chassis.set_turn_pid(-139, 60);
   chassis.wait_drive();
   chassis.set_drive_pid(9, DRIVE_SPEED);
   chassis.wait_drive();
@@ -241,12 +243,10 @@ void rightAwp1(){
   chassis.wait_drive();
   intake_toggle(false);
   auton_intake(true);
-  chassis.set_drive_pid(-8, DRIVE_SPEED);
+  chassis.set_drive_pid(-10, DRIVE_SPEED);
   chassis.wait_drive();
   pros::delay(25);
   auton_intake(false);
-  chassis.set_drive_pid(2, DRIVE_SPEED);
-  chassis.wait_drive();
 }
 
 void rightAwp2(){

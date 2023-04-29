@@ -92,7 +92,6 @@ void initialize() {
   ez::as::auton_selector.add_autons({
     Auton("Right AWP1 (start away from roller) original (move forward, intake, shoot)", rightAwp1),
     Auton("Left AWP (start at roller)", leftAwp), 
-    Auton("Right AWP2", rightAwp2),
     Auton("Right AWP (start away from roller), new (swing turn, roller)", rightAwp),
     Auton("Solo AWP (start at roller)", soloAwp),
     Auton("Do nothing (start away from roller)", doNothing),
@@ -113,11 +112,6 @@ void initialize() {
  */
 void disabled() {
   // . . .
-  while(true){
-  if(master.get_digital_new_press(DIGITAL_RIGHT)) ez::as::page_up();
-  else if (master.get_digital_new_press(DIGITAL_LEFT)) ez::as::page_down();
-  pros::delay(20);
-  }
 }
 
 
@@ -132,6 +126,11 @@ void disabled() {
  * starts.
  */
 void competition_initialize() {
+  while(true){
+  if(master.get_digital_new_press(DIGITAL_RIGHT)) ez::as::page_up();
+  else if (master.get_digital_new_press(DIGITAL_LEFT)) ez::as::page_down();
+  pros::delay(20);
+  }
 }
 
 
